@@ -2,13 +2,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import useAuthCalls from "../service/useAuthCalls";
-import { useState } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const { loginSuccess, loginWithGoogle, resetPassword } = useAuthCalls();
-  const [email, setEmail] = useState("");
-  const [show, setShow] = useState(false);
+
   const initialValues = {
     email: "",
     password: "",
@@ -31,13 +29,8 @@ const Login = () => {
     loginSuccess(values);
   };
 
-  const handleClick = () => {
-    if (!email) {
-      setShow(true);
-    } else {
-      resetPassword(email);
-      setEmail("");
-    }
+  const handleClick = (email) => {
+    resetPassword(email);
   };
 
   return (
@@ -48,7 +41,7 @@ const Login = () => {
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
-        {() => (
+        {({ values }) => (
           <Form>
             <div className="mb-4">
               <label htmlFor="email" className="block mb-2">
@@ -59,19 +52,11 @@ const Login = () => {
                 id="email"
                 name="email"
                 className="border border-gray-300 rounded p-2 w-full peer"
-                value={email || ""}
-                onChange={(e) => {
-                  setEmail(e.target.value);
-                }}
               />
-              <div className="flex justify-between">
-                <p className="text-blue-600 text-end font-bold">
-                  {show && "Lütfen Email Giriniz !!!"}
-                </p>
-
+              <div className="">
                 <p
                   className="text-red-600 text-end font-bold hover:underline hover:underline-decoration-red-800 cursor-pointer"
-                  onClick={handleClick}
+                  onClick={() => handleClick(values.email)}
                 >
                   Reset Password
                 </p>

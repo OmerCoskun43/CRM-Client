@@ -38,7 +38,7 @@ const useAuthCalls = () => {
         accessToken: user.accessToken,
       })
     );
-    notifySuccess("Login Successful");
+
     navigate("/");
   };
 
@@ -122,6 +122,7 @@ const useAuthCalls = () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
       handleLogin(userCredential.user);
+      notifySuccess("Login Successful");
     } catch (error) {
       console.log("Google login error:", error); // Hata günlüğü
       notifyError("Login Failed");
