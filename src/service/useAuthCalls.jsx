@@ -33,6 +33,7 @@ const useAuthCalls = () => {
           isLead: false,
           isActive: true,
           photoURL: user.photoURL || "",
+          isLoggedIn: true,
         },
         accessToken: user.accessToken,
       })
@@ -44,6 +45,7 @@ const useAuthCalls = () => {
   const loginSuccess = async (userInfo) => {
     try {
       const { data } = await axiosPublic.post("/auth/login", userInfo);
+      console.log("data", data);
       dispatch(login(data));
       notifySuccess("Login Successful");
       navigate("/");

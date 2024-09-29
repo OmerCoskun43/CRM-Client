@@ -12,7 +12,7 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Navbar />
-          <div className="flex-grow">
+          <div className="flex-grow ">
             <AppRouter />
           </div>
           <Footer />

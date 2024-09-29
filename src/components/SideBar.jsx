@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           {isOpen ? <HiOutlineX size={28} /> : <HiOutlineMenu size={28} />}
         </button>
 
-        <h2 className="text-xl text-start font-bold mb-4 ps-2">Menu</h2>
+        <h2 className="text-xl text-start font-bold mb-4 mt-6 ps-2">Menu</h2>
         <ul className="text-start font-bold ps-2">
           {["/", "/customers", "/products", "/departments", "/sales"].map(
             (path, index) => (

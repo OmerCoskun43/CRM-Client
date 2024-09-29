@@ -14,7 +14,7 @@ const Home = () => {
           Overview
         </NavLink>
         <NavLink
-          className="cursor-pointer bg-white text-black font-bold px-2 py-1 rounded-lg hover:bg-gray-200  text-center  w-[8rem] md:w-[12rem] "
+          className="cursor-pointer bg-gray-400 text-black font-bold px-2 py-1 rounded-lg hover:bg-gray-300  text-center  w-[8rem] md:w-[12rem] "
           to="/statistics"
           style={({ isActive }) => ({
             borderBottom: isActive ? "4px solid red" : "",

@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-    background-color: rgb(212, 210, 210);
+
+.custom-border {
+  @apply font-bold border-b-2 border-red-500 pe-2;
 }

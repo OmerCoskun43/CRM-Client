@@ -9,7 +9,7 @@ import useCrmCalls from "../../service/useCrmCalls";
 
 const Register = () => {
   const navigate = useNavigate();
-  const { departmentSuccess } = useCrmCalls();
+  const { fetchData } = useCrmCalls();
   const { registerSuccess, loginWithGoogle } = useAuthCalls();
   const [profilePic, setProfilePic] = useState(null);
   const { departments } = useSelector((state) => state.crm);
@@ -58,7 +58,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    departmentSuccess();
+    fetchData("departmens");
   }, []);
 
   return (
