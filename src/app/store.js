@@ -10,7 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage/session";
+import storage from "redux-persist/lib/storage/session"; // localStorage kullanımı
 import userReducer from "../features/userSlice";
 import crmReducer from "../features/crmSlice";
 

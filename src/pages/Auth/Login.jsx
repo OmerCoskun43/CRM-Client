@@ -1,7 +1,8 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import useAuthCalls from "../service/useAuthCalls";
+import useAuthCalls from "../../service/useAuthCalls";
+import { notifyError } from "../../helper/HotToast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -30,7 +31,11 @@ const Login = () => {
   };
 
   const handleClick = (email) => {
-    resetPassword(email);
+    if (!email) {
+      notifyError("Email is required");
+    } else {
+      resetPassword(email);
+    }
   };
 
   return (

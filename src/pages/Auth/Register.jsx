@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
-import useAuthCalls from "../service/useAuthCalls";
+import useAuthCalls from "../../service/useAuthCalls";
 import { useSelector } from "react-redux";
-import useCrmCalls from "../service/useCrmCalls";
+import useCrmCalls from "../../service/useCrmCalls";
 
 const Register = () => {
   const navigate = useNavigate();

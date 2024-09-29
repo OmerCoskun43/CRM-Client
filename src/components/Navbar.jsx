@@ -32,7 +32,9 @@ function Navbar() {
                 <img
                   src={
                     user?.profilePic
-                      ? `${import.meta.env.VITE_BASE_URL}${user.profilePic}`
+                      ? user?.profilePic.includes("https")
+                        ? user?.profilePic
+                        : `${import.meta.env.VITE_BASE_URL}${user.profilePic}`
                       : user?.photoURL || "defaultProfilePic.png" // Varsayılan bir resim kullanabilirsiniz
                   }
                   alt=""
@@ -41,7 +43,9 @@ function Navbar() {
 
                 <div>
                   <p className="text-white text-sm font-bold">
-                    {user?.name[0].toUpperCase() + user?.name.slice(1)}
+                    {user?.name
+                      ? user.name[0].toUpperCase() + user.name.slice(1)
+                      : "Misafir"}
                   </p>
                   <p className="text-gray-400 hidden md:block text-sm font-bold">
                     {user?.email}
@@ -65,7 +69,7 @@ function Navbar() {
                         active ? "bg-gray-200" : ""
                       }`}
                     >
-                      Home
+                      Dashboard
                     </Link>
                   )}
                 </Menu.Item>

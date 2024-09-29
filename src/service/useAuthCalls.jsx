@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch } from "react-redux";
 import { login, logout, register } from "../features/userSlice";
 import useAxios from "./useAxios";
@@ -7,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
-  onAuthStateChanged,
+  // onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -16,7 +15,6 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../auth/firebase";
-import { useEffect } from "react";
 
 const useAuthCalls = () => {
   const dispatch = useDispatch();
@@ -28,6 +26,7 @@ const useAuthCalls = () => {
     dispatch(
       login({
         data: {
+          _id: user.uid || "",
           name: user.displayName || "",
           email: user.email || "",
           isAdmin: false,
@@ -121,6 +120,7 @@ const useAuthCalls = () => {
   const loginWithGoogle = async () => {
     try {
       const userCredential = await signInWithPopup(auth, provider);
+      console.log("google", userCredential.user);
       handleLogin(userCredential.user);
       notifySuccess("Login Successful");
     } catch (error) {
@@ -148,19 +148,19 @@ const useAuthCalls = () => {
     }
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        handleLogin(user);
-        console.log("Kullanıcı giriş yaptı");
-      } else {
-        dispatch(logout());
-        console.log("Kullanıcı cıkıs yaptı");
-      }
-    });
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       handleLogin(user);
+  //       console.log("Kullanıcı giriş yaptı");
+  //     } else {
+  //       dispatch(logout());
+  //       console.log("Kullanıcı çıkış yaptı");
+  //     }
+  //   });
 
-    return () => unsubscribe();
-  }, [dispatch]);
+  //   return () => unsubscribe();
+  // }, [dispatch]);
 
   return {
     loginSuccess,
