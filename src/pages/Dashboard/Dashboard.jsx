@@ -17,6 +17,7 @@ const Dashboard = () => {
           fetchData("sales"),
           fetchData("reviews"),
           fetchData("customers"),
+          fetchData("departments"),
         ]);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -26,7 +27,6 @@ const Dashboard = () => {
     fetchAllData();
   }, []);
 
-  
   return (
     <div className="flex h-full shadow-md">
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />

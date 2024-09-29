@@ -11,6 +11,7 @@ import SaleList from "../pages/Sales/SaleList";
 import Home from "../pages/Home/Home";
 import Overview from "../pages/Home/Overview";
 import Statistics from "../pages/Home/Statistics";
+import CustomerDetail from "../pages/Customers/CustomerDetail";
 
 const AppRouter = () => {
   return (
@@ -25,6 +26,7 @@ const AppRouter = () => {
           </Route>
 
           <Route path="/customers" element={<CustomerList />} />
+          <Route path="/customers/:id" element={<CustomerDetail />} />
           <Route path="/products" element={<ProductList />} />
           <Route path="/departments" element={<DepartmentList />} />
           <Route path="/sales" element={<SaleList />} />
