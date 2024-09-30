@@ -13,11 +13,6 @@ const useCrmCalls = () => {
     try {
       const { data } = await axiosWithToken.get(`/${entity}`);
       dispatch(setData({ entity, data }));
-      notifySuccess(
-        `${
-          entity.charAt(0).toUpperCase() + entity.slice(1)
-        } Loaded Successfully`
-      );
     } catch (error) {
       console.log(error);
       notifyError(
@@ -88,7 +83,13 @@ const useCrmCalls = () => {
     }
   };
 
-  return { fetchData, deleteData, createData, sendMail, updateData };
+  return {
+    fetchData,
+    deleteData,
+    createData,
+    sendMail,
+    updateData,
+  };
 };
 
 export default useCrmCalls;

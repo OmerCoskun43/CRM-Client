@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { login, logout, register } from "../features/userSlice";
+import { login, logout, register, refresh } from "../features/userSlice";
 import useAxios from "./useAxios";
 import { notifyError, notifyInfo, notifySuccess } from "../helper/HotToast";
 import { useNavigate } from "react-router-dom";
@@ -45,7 +45,6 @@ const useAuthCalls = () => {
   const loginSuccess = async (userInfo) => {
     try {
       const { data } = await axiosPublic.post("/auth/login", userInfo);
-      console.log("data", data);
       dispatch(login(data));
       notifySuccess("Login Successful");
       navigate("/");
@@ -75,6 +74,19 @@ const useAuthCalls = () => {
     } catch (error) {
       console.log("Register error:", error); // Hata günlüğü
       notifyError("Register Failed");
+    }
+  };
+
+  const refreshTokenSuccess = async (refreshToken) => {
+    try {
+      const { data } = await axiosWithToken.post("/auth/refresh", {
+        refreshToken,
+      });
+      dispatch(refresh(data));
+      notifySuccess("Refreshed successfully");
+    } catch (error) {
+      console.log(error);
+      notifyError("Refresh failed");
     }
   };
 
@@ -174,6 +186,7 @@ const useAuthCalls = () => {
     loginWithGoogle,
     resetPassword,
     loginWithGoogleRedirect,
+    refreshTokenSuccess,
   };
 };
 

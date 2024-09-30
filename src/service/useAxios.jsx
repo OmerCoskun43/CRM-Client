@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import axios from "axios";
 const useAxios = () => {
-  const { token } = useSelector((state) => state.user);
+  const { accessToken } = useSelector((state) => state.user);
   const URL = import.meta.env.VITE_BASE_URL;
 
   const axiosPublic = axios.create({
@@ -11,7 +11,7 @@ const useAxios = () => {
   const axiosWithToken = axios.create({
     baseURL: `${URL}/api`,
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
 

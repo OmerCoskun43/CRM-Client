@@ -5,8 +5,6 @@ const Overview = () => {
     (state) => state.crm
   );
 
-  console.log("users", users);
-
   const latestUser = users
     .filter((user) => !user.isAdmin && !user.isLead)
     .reduce((prev, current) => {

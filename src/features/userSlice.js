@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: null,
-  token: null,
+  accessToken: null,
+  refreshToken: null,
 };
 
 const userSlice = createSlice({
@@ -12,18 +13,24 @@ const userSlice = createSlice({
   reducers: {
     login: (state, action) => {
       state.user = action.payload.data; // Kullanıcı bilgilerini ayarlayın
-      state.token = action.payload.accessToken;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload?.refreshToken || null;
     },
     logout: (state) => {
       state.user = null; // Kullanıcı bilgisini sıfırlayın
-      state.token = null;
+      state.accessToken = null;
+      state.refreshToken = null;
     },
     register(state, action) {
       state.user = action.payload.data;
-      state.token = action.payload.accessToken;
+      state.accessToken = action.payload.accessToken;
+      state.refreshToken = action.payload.refreshToken;
+    },
+    refresh(state, action) {
+      state.accessToken = action.payload.accessToken;
     },
   },
 });
 
-export const { login, logout, register } = userSlice.actions;
+export const { login, logout, register, refresh } = userSlice.actions;
 export default userSlice.reducer;
