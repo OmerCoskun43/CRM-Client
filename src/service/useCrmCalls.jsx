@@ -61,7 +61,18 @@ const useCrmCalls = () => {
     }
   };
 
-  return { fetchData, deleteData, createData };
+  const sendMail = async (data) => {
+    console.log("data", data); // Veriyi burada kontrol edebilirsiniz.
+    try {
+      await axiosWithToken.post("/mails", data);
+      notifySuccess("Mail sent successfully");
+    } catch (error) {
+      console.log(error);
+      notifyError("Mail sending failed");
+    }
+  };
+
+  return { fetchData, deleteData, createData, sendMail };
 };
 
 export default useCrmCalls;

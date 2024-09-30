@@ -107,7 +107,7 @@ const Statistics = () => {
 
       <h3 className="text-xl font-semibold mb-2">User Interactions</h3>
       <div className="p-4 border rounded-lg bg-gray-100 shadow">
-        User Logins: <strong>{userLogins}</strong> this month
+        User Logins: <strong>{userLogins}</strong> now!
       </div>
 
       <h3 className="text-xl font-semibold mb-2">Customer Relations</h3>

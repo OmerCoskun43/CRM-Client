@@ -58,7 +58,7 @@ const Register = () => {
   };
 
   useEffect(() => {
-    fetchData("departmens");
+    fetchData("departments");
   }, []);
 
   return (

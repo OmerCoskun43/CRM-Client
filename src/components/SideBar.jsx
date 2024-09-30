@@ -8,10 +8,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   };
 
   return (
-    <div className={`flex h-screen absolute`}>
+    <div className={`flex h-screen fixed top-15 mt-20 left-0`}>
       {/* Sidebar */}
       <div
-        className={`bg-slate-500 text-white h-full p-2 transition-transform duration-300 ease-in-out ${
+        className={`bg-gray-700 text-white h-full p-2 transition-transform duration-300 ease-in-out ${
           isOpen ? "translate-x-0" : "-translate-x-[80%] "
         } md:translate-x-0 md:w-36 w-[11.5rem]`}
       >

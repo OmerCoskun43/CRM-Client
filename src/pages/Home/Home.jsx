@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <div className="flex justify-center gap-5 mt-5">
+      <div className="flex justify-center gap-5 mt-20 ">
         <NavLink
           to=""
           className="cursor-pointer bg-black text-white font-bold px-2 py-1 rounded-lg hover:bg-gray-700 w-[8rem] text-center md:w-[12rem]"
@@ -23,6 +23,7 @@ const Home = () => {
           Statistics
         </NavLink>
       </div>
+
       <Outlet />
     </>
   );
