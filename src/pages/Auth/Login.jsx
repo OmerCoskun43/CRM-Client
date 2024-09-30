@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 border border-gray-300 rounded-lg bg-blue-100 shadow">
+    <div className="max-w-md mx-auto mt-28 p-6 border border-gray-300 rounded-lg bg-blue-100 shadow">
       <h1 className="text-2xl font-bold mb-6">Login</h1>
       <Formik
         initialValues={initialValues}

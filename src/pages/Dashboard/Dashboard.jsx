@@ -18,6 +18,7 @@ const Dashboard = () => {
           fetchData("reviews"),
           fetchData("customers"),
           fetchData("departments"),
+          fetchData("categories"),
         ]);
       } catch (error) {
         console.error("Error fetching data:", error);

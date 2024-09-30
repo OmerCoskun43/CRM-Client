@@ -29,7 +29,7 @@ const CustomerDetail = () => {
     sendMail({
       to: customer.email,
       subject: mailData.subject,
-      html: `Dear ${customer.name},\n\n${mailData.body}`,
+      html: `Dear ${customer.name},\n\n${mailData.html}`,
     });
     setIsModalOpen(false);
   };

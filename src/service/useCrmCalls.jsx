@@ -25,6 +25,39 @@ const useCrmCalls = () => {
       );
     }
   };
+  const createData = async (entity, data) => {
+    try {
+      await axiosWithToken.post(`/${entity}`, data);
+      notifySuccess(
+        `${
+          entity.charAt(0).toUpperCase() + entity.slice(1)
+        } created Successfully`
+      );
+      await fetchData(entity);
+    } catch (error) {
+      console.log(error);
+      notifyError(
+        `${entity.charAt(0).toUpperCase() + entity.slice(1)} created Failed`
+      );
+    }
+  };
+
+  const updateData = async (entity, id, data) => {
+    try {
+      await axiosWithToken.put(`/${entity}/${id}`, data);
+      notifySuccess(
+        `${
+          entity.charAt(0).toUpperCase() + entity.slice(1)
+        } updated Successfully`
+      );
+      await fetchData(entity);
+    } catch (error) {
+      console.log(error);
+      notifyError(
+        `${entity.charAt(0).toUpperCase() + entity.slice(1)} updated Failed`
+      );
+    }
+  };
 
   const deleteData = async (entity, id) => {
     try {
@@ -44,23 +77,6 @@ const useCrmCalls = () => {
     }
   };
 
-  const createData = async (entity, data) => {
-    try {
-      await axiosWithToken.post(`/${entity}`, data);
-      notifySuccess(
-        `${
-          entity.charAt(0).toUpperCase() + entity.slice(1)
-        } created Successfully`
-      );
-      await fetchData(entity);
-    } catch (error) {
-      console.log(error);
-      notifyError(
-        `${entity.charAt(0).toUpperCase() + entity.slice(1)} created Failed`
-      );
-    }
-  };
-
   const sendMail = async (data) => {
     console.log("data", data); // Veriyi burada kontrol edebilirsiniz.
     try {
@@ -72,7 +88,7 @@ const useCrmCalls = () => {
     }
   };
 
-  return { fetchData, deleteData, createData, sendMail };
+  return { fetchData, deleteData, createData, sendMail, updateData };
 };
 
 export default useCrmCalls;
