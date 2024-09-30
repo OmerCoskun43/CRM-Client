@@ -13,6 +13,7 @@ import Overview from "../pages/Home/Overview";
 import Statistics from "../pages/Home/Statistics";
 import CustomerDetail from "../pages/Customers/CustomerDetail";
 import ProductDetail from "../pages/Products/ProductDetail";
+import DepartmentDetail from "../pages/Departments/DepartmentDetail";
 
 const AppRouter = () => {
   return (
@@ -31,6 +32,7 @@ const AppRouter = () => {
           <Route path="/products" element={<ProductList />} />
           <Route path="/products/:id" element={<ProductDetail />} />
           <Route path="/departments" element={<DepartmentList />} />
+          <Route path="/departments/:id" element={<DepartmentDetail />} />
           <Route path="/sales" element={<SaleList />} />
         </Route>
       </Route>
