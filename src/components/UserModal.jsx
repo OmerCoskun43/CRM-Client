@@ -28,7 +28,7 @@ const UserModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name);
     formDataToSend.append("email", formData.email);
-    formDataToSend.append("departmentId", formData.departmentId);
+    formDataToSend.append("departmentId", formData.departmentId._id);
 
     if (profilePic) {
       formDataToSend.append("profilePic", profilePic); // Profil resmini ekle
