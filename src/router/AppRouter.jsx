@@ -15,6 +15,8 @@ import CustomerDetail from "../pages/Customers/CustomerDetail";
 import ProductDetail from "../pages/Products/ProductDetail";
 import DepartmentDetail from "../pages/Departments/DepartmentDetail";
 import SaleDetail from "../pages/Sales/SaleDetail";
+import UserList from "../pages/Users/UserList";
+import UserDetail from "../pages/Users/UserDetail";
 
 const AppRouter = () => {
   return (
@@ -36,6 +38,8 @@ const AppRouter = () => {
           <Route path="/departments/:id" element={<DepartmentDetail />} />
           <Route path="/sales" element={<SaleList />} />
           <Route path="/sales/:id" element={<SaleDetail />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/users/:id" element={<UserDetail />} />
         </Route>
       </Route>
       <Route path="*" element={<NotFound />} />

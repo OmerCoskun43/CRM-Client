@@ -25,23 +25,28 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
 
         <h2 className="text-xl text-start font-bold mb-4 mt-6 ps-2">Menu</h2>
         <ul className="text-start font-bold ps-2">
-          {["/", "/customers", "/products", "/departments", "/sales"].map(
-            (path, index) => (
-              <li className="mb-2" key={index}>
-                <NavLink
-                  to={path}
-                  onClick={() => setIsOpen(false)}
-                  className={({ isActive }) =>
-                    isActive ? "text-red-600" : "hover:text-red-600"
-                  }
-                >
-                  {path === "/"
-                    ? "Dashboard"
-                    : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-                </NavLink>
-              </li>
-            )
-          )}
+          {[
+            "/",
+            "/customers",
+            "/products",
+            "/departments",
+            "/sales",
+            "/users",
+          ].map((path, index) => (
+            <li className="mb-2" key={index}>
+              <NavLink
+                to={path}
+                onClick={() => setIsOpen(false)}
+                className={({ isActive }) =>
+                  isActive ? "text-red-600" : "hover:text-red-600"
+                }
+              >
+                {path === "/"
+                  ? "Dashboard"
+                  : path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </div>
 
