@@ -79,7 +79,7 @@ const Overview = () => {
           {latestUser ? (
             <div className="text-gray-700">
               <span className="font-semibold">
-                {latestUser.name[0].toUpperCase() + latestUser.name.slice(1)}
+                {latestUser?.name[0].toUpperCase() + latestUser.name.slice(1)}
               </span>{" "}
               logged in{" "}
               <span className="font-light">

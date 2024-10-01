@@ -34,7 +34,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center z-20 items-center"
+      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center z-50 items-center"
       onClick={onClose}
     >
       <div
@@ -42,7 +42,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-3xl font-bold mb-6 text-white text-center">
-          {initialData ? "Edit Sale" : "Create Sale"}
+          {initialData?._id ? "Edit Sale" : "Create Sale"}
         </h3>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -52,11 +52,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             <select
               name="customerId"
               id="customerId"
-              value={
-                typeof formData.customerId === "object"
-                  ? formData.customerId?._id
-                  : formData.customerId
-              }
+              value={formData.customerId}
               onChange={handleInputChange}
               required
               className="w-full p-2 rounded"
@@ -77,11 +73,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             <select
               name="productId"
               id="productId"
-              value={
-                typeof formData.productId === "object"
-                  ? formData.productId?._id
-                  : formData.productId
-              }
+              value={formData.productId}
               onChange={handleInputChange}
               required
               className="w-full p-2 rounded"
@@ -162,7 +154,14 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             </select>
           </div>
 
-          <div className="flex justify-center mt-6">
+          <div className="flex justify-between mt-6">
+            <button
+              type="button"
+              onClick={onClose}
+              className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition w-full mr-2"
+            >
+              Cancel
+            </button>
             <button
               type="submit"
               className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition w-full"

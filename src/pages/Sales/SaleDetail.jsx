@@ -53,7 +53,7 @@ const SaleDetail = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen mt-20 mx-auto max-w-4xl relative">
+    <div className="p-6 min-h-screen mt-20 mx-[-22px] md:mx-auto xs:w-[20rem] sm:w-[30rem] md:w-[630px] lg:w-[851px] relative">
       <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         Sale Details
       </h2>

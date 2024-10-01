@@ -43,19 +43,19 @@ const SaleList = () => {
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
           <thead className="bg-green-400">
             <tr className="text-gray-700">
-              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-[12px] md:text-base">
                 Product Name
               </th>
-              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-[12px] md:text-base">
                 Quantity
               </th>
-              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-[12px] md:text-base">
                 Price
               </th>
-              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-[12px] md:text-base">
                 Date
               </th>
-              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-[12px] md:text-base">
                 Status
               </th>
             </tr>
@@ -78,19 +78,19 @@ const SaleList = () => {
                     })
                   } // saleDetail'ı state olarak geçir
                 >
-                  <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base text-black font-bold">
+                  <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base text-black font-bold">
                     {sale.productId.name}
                   </td>
-                  <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
                     {sale.quantity}
                   </td>
-                  <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
                     {sale.price}₺
                   </td>
-                  <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
                     {new Date(sale.updatedAt).toLocaleString()}
                   </td>
-                  <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
                     <span
                       className={`inline-block px-2 py-1 rounded-full text-center text-xs font-semibold ${
                         sale.status === "completed"
