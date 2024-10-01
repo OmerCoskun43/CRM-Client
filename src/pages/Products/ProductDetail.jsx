@@ -1,26 +1,15 @@
-/* eslint-disable no-unused-vars */
-import { useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ProductModal from "../../components/ProductModal";
 import useCrmCalls from "../../service/useCrmCalls";
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const { products } = useSelector((state) => state.crm);
+  const location = useLocation();
+  const product = location.state; // Burada state ile gelen ürün verisini alıyoruz
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const navigate = useNavigate();
   const { deleteData, updateData } = useCrmCalls();
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: "",
-    stockQuantity: "",
-    categoryId: "",
-    isActive: true,
-  });
-
-  const product = products?.find((prod) => prod._id === id);
+  const [formData, setFormData] = useState(product);
+  const navigate = useNavigate();
 
   if (!product) {
     return <div className="p-6 text-center">Product not found.</div>;
@@ -92,7 +81,7 @@ const ProductDetail = () => {
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           onSubmit={handleEdit}
-          initialData={product} // Pass the current product data to pre-fill the modal
+          initialData={product}
           setFormData={setFormData}
           formData={formData}
         />

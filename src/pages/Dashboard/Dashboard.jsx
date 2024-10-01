@@ -6,11 +6,13 @@ import useCrmCalls from "../../service/useCrmCalls";
 import ConfirmModal from "../../components/ConfirmModal";
 import useToken from "../../hooks/useToken"; // Yeni eklediğimiz hook
 import { notifySuccess } from "../../helper/HotToast";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { fetchData } = useCrmCalls();
   const { isModalOpen, handleConfirmRefresh, handleCloseModal } = useToken();
+  const { accessToken } = useSelector((state) => state.user);
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -34,6 +36,8 @@ const Dashboard = () => {
 
     fetchAllData();
   }, []);
+
+  console.log("accessToken", accessToken);
 
   return (
     <div className="flex h-full shadow-md">

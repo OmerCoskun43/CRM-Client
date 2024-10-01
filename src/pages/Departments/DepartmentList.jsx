@@ -31,7 +31,7 @@ const DepartmentList = () => {
       </button>
       <div className="overflow-x-auto rounded-lg shadow-lg">
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
-          <thead className="bg-gray-100">
+          <thead className="bg-green-400">
             <tr className="text-gray-700">
               <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
                 Name

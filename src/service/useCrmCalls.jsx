@@ -21,6 +21,7 @@ const useCrmCalls = () => {
     }
   };
   const createData = async (entity, data) => {
+    console.log("data", data);
     try {
       await axiosWithToken.post(`/${entity}`, data);
       notifySuccess(
@@ -28,11 +29,14 @@ const useCrmCalls = () => {
           entity.charAt(0).toUpperCase() + entity.slice(1)
         } created Successfully`
       );
+
       await fetchData(entity);
     } catch (error) {
       console.log(error);
       notifyError(
-        `${entity.charAt(0).toUpperCase() + entity.slice(1)} created Failed`
+        `${
+          entity.charAt(0).toUpperCase() + entity.slice(1)
+        } created Failed  and ${error.response.data.message}`
       );
     }
   };
