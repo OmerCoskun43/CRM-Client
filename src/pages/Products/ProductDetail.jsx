@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import ProductModal from "../../components/ProductModal";
 import useCrmCalls from "../../service/useCrmCalls";
+import DetailSkeleton from "./DetailSkeleton"; // DetailSkeleton bileşenini içe aktarıyoruz
 
 const ProductDetail = () => {
   const location = useLocation();
@@ -10,6 +11,16 @@ const ProductDetail = () => {
   const { deleteData, updateData } = useCrmCalls();
   const [formData, setFormData] = useState(product);
   const navigate = useNavigate();
+
+  const { loading, error } = useCrmCalls(); // Yüklenme ve hata durumu
+
+  if (loading) {
+    return <DetailSkeleton />; // Yükleniyor durumunda DetailSkeleton göster
+  }
+
+  if (error) {
+    return <div className="p-6 text-center text-red-600">{error}</div>; // Hata durumu
+  }
 
   if (!product) {
     return <div className="p-6 text-center">Product not found.</div>;

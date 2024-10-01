@@ -3,18 +3,47 @@ import { useNavigate } from "react-router-dom";
 import useCrmCalls from "../../service/useCrmCalls";
 import { useState } from "react";
 import CustomerModal from "../../components/CustomerModal"; // Yeni modal bileşeni
+import CustomerSkeleton from "./CustomerSkeleton"; // Skeleton bileşeni
+import { useEffect } from "react";
 
 const CustomerList = () => {
-  const { customers, departments } = useSelector((state) => state.crm);
+  const { customers, loading, error } = useSelector((state) => state.crm);
   const { user } = useSelector((state) => state.user);
   const navigate = useNavigate();
   const { createData } = useCrmCalls();
   const [isModalOpen, setModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    status: "active",
+    address: "",
+    phone: "",
+    departmentId: "",
+  });
 
   const handleSubmit = (formData) => {
     createData("customers", { ...formData, userId: user._id });
     setModalOpen(false);
   };
+
+  // Hata durumunu konsola yazdır
+  useEffect(() => {
+    if (error) {
+      console.error("Error fetching customers:", error);
+    }
+  }, [error]);
+
+  if (loading) {
+    return <CustomerSkeleton />; // Loading durumunda Skeleton döndür
+  }
+
+  if (error) {
+    return (
+      <div className="p-6 text-center text-red-600">
+        Error occurred while fetching customers.
+      </div>
+    ); // Hata durumu
+  }
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen mt-20 mx-[-24px] md:mx-0">
@@ -47,13 +76,13 @@ const CustomerList = () => {
                 className="hover:bg-gray-100 cursor-pointer transition-colors duration-200"
                 onClick={() => navigate(`/customers/${customer._id}`)}
               >
-                <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base text-black font-bold">
+                <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base text-black font-bold">
                   {customer.name}
                 </td>
-                <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base">
+                <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
                   {customer.email}
                 </td>
-                <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base">
+                <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
                   <span
                     className={`inline-block px-2 py-1 rounded-full text-center text-xs font-semibold ${
                       customer.status === "active"
@@ -75,8 +104,9 @@ const CustomerList = () => {
           isOpen={isModalOpen}
           onClose={() => setModalOpen(false)}
           onSubmit={handleSubmit}
-          departments={departments}
           user={user}
+          formData={formData}
+          setFormData={setFormData}
         />
       )}
     </div>

@@ -1,20 +1,20 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 
-const CustomerModal = ({ isOpen, onClose, onSubmit, departments, user }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    status: "active",
-    address: "",
-    phone: "",
-    departmentId: "",
-  });
+import { useSelector } from "react-redux";
 
+const CustomerModal = ({
+  isOpen,
+  onClose,
+  onSubmit,
+  setFormData,
+  formData,
+}) => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const { departments } = useSelector((state) => state.crm);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -89,23 +89,17 @@ const CustomerModal = ({ isOpen, onClose, onSubmit, departments, user }) => {
           />
           <select
             name="departmentId"
-            value={formData.departmentId}
+            value={formData.departmentId || ""}
             onChange={handleInputChange}
             className="border border-white p-3 w-full rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-red-500"
             required
           >
-            {user?.departmentId ? (
-              <option value={user?.departmentId}></option>
-            ) : (
-              <>
-                <option value="">Select Department</option>
-                {departments?.map((department) => (
-                  <option key={department._id} value={department._id}>
-                    {department.name}
-                  </option>
-                ))}
-              </>
-            )}
+            <option value="">Select Department</option>
+            {departments?.map((department) => (
+              <option key={department._id} value={department._id}>
+                {department.name}
+              </option>
+            ))}
           </select>
 
           <div className="flex justify-center space-x-4 mt-6">
@@ -113,7 +107,7 @@ const CustomerModal = ({ isOpen, onClose, onSubmit, departments, user }) => {
               type="submit"
               className="bg-blue-700 text-white py-2 px-6 rounded-lg hover:bg-blue-800 transition-transform transform hover:scale-105 shadow-lg font-bold"
             >
-              Add
+              {formData._id ? "Update" : "Add"}
             </button>
             <button
               type="button"

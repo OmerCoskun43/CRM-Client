@@ -50,7 +50,7 @@ const useAuthCalls = () => {
       navigate("/");
     } catch (error) {
       console.log("Login error:", error); // Hata günlüğü
-      notifyError("Login Failed");
+      notifyError("Login Failed", error.response.data.message);
     }
   };
 
@@ -61,7 +61,7 @@ const useAuthCalls = () => {
       notifySuccess("Logout Successful");
     } catch (error) {
       console.log("Logout error:", error); // Hata günlüğü
-      notifyError("Logout Failed");
+      notifyError("Logout Failed", error.response.data.message);
     }
   };
 
@@ -73,7 +73,7 @@ const useAuthCalls = () => {
       navigate("/");
     } catch (error) {
       console.log("Register error:", error); // Hata günlüğü
-      notifyError("Register Failed");
+      notifyError("Register Failed", error.response.data.message);
     }
   };
 
@@ -86,7 +86,7 @@ const useAuthCalls = () => {
       notifySuccess("Refreshed successfully");
     } catch (error) {
       console.log(error);
-      notifyError("Refresh failed");
+      notifyError("Refresh failed", error.response.data.message);
     }
   };
 
@@ -102,7 +102,7 @@ const useAuthCalls = () => {
       notifySuccess("Register Successful");
     } catch (error) {
       console.log("Create user error:", error); // Hata günlüğü
-      notifyError("Register Failed");
+      notifyError("Register Failed", error.response.data.message);
     }
   };
 
@@ -116,7 +116,7 @@ const useAuthCalls = () => {
       handleLogin(userCredential.user);
     } catch (error) {
       console.log("Sign in error:", error); // Hata günlüğü
-      notifyError("Login Failed");
+      notifyError("Login Failed", error.response.data.message);
     }
   };
 
@@ -127,7 +127,7 @@ const useAuthCalls = () => {
       notifySuccess("Logout Successful");
     } catch (error) {
       console.log("Logout Google error:", error); // Hata günlüğü
-      notifyError("Logout Failed");
+      notifyError("Logout Failed", error.response.data.message);
     }
   };
 
@@ -139,7 +139,7 @@ const useAuthCalls = () => {
       notifySuccess("Login Successful");
     } catch (error) {
       console.log("Google login error:", error); // Hata günlüğü
-      notifyError("Login Failed");
+      notifyError("Login Failed", error.response.data.message);
     }
   };
 
@@ -149,7 +149,7 @@ const useAuthCalls = () => {
       notifyInfo("Şifre sıfırlama e-postası gönderildi.");
     } catch (error) {
       console.log("Reset password error:", error); // Hata günlüğü
-      notifyError("Şifre sıfırlama başarısız.");
+      notifyError("Şifre sıfırlama başarısız.", error.response.data.message);
     }
   };
 
@@ -158,7 +158,7 @@ const useAuthCalls = () => {
       await signInWithRedirect(auth, provider);
     } catch (error) {
       console.log("Google redirect login error:", error); // Hata günlüğü
-      notifyError("Login Failed");
+      notifyError("Login Failed", error.response.data.message);
     }
   };
 

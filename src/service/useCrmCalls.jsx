@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import useAxios from "./useAxios";
-import { setData } from "../features/crmSlice";
+import { setData, setLoading, setError } from "../features/crmSlice";
 import { notifyError, notifySuccess } from "../helper/HotToast";
 import { useNavigate } from "react-router-dom";
 
@@ -10,18 +10,23 @@ const useCrmCalls = () => {
   const navigate = useNavigate();
 
   const fetchData = async (entity) => {
+    dispatch(setLoading()); // Yükleme durumunu başlat
     try {
       const { data } = await axiosWithToken.get(`/${entity}`);
       dispatch(setData({ entity, data }));
     } catch (error) {
       console.log(error);
+      dispatch(setError()); // Hata durumunu ayarla
       notifyError(
-        `${entity.charAt(0).toUpperCase() + entity.slice(1)} Loading Failed`
+        `${entity.charAt(0).toUpperCase() + entity.slice(1)} Loading Failed ${
+          error.response.data.message
+        }`
       );
     }
   };
+
   const createData = async (entity, data) => {
-    console.log("data", data);
+    dispatch(setLoading()); // Yükleme durumunu başlat
     try {
       await axiosWithToken.post(`/${entity}`, data);
       notifySuccess(
@@ -29,19 +34,20 @@ const useCrmCalls = () => {
           entity.charAt(0).toUpperCase() + entity.slice(1)
         } created Successfully`
       );
-
       await fetchData(entity);
     } catch (error) {
       console.log(error);
+      dispatch(setError()); // Hata durumunu ayarla
       notifyError(
         `${
           entity.charAt(0).toUpperCase() + entity.slice(1)
-        } created Failed  and ${error.response.data.message}`
+        } created Failed and ${error.response.data.message}`
       );
     }
   };
 
   const updateData = async (entity, id, data) => {
+    dispatch(setLoading()); // Yükleme durumunu başlat
     try {
       await axiosWithToken.put(`/${entity}/${id}`, data);
       notifySuccess(
@@ -52,13 +58,17 @@ const useCrmCalls = () => {
       await fetchData(entity);
     } catch (error) {
       console.log(error);
+      dispatch(setError()); // Hata durumunu ayarla
       notifyError(
-        `${entity.charAt(0).toUpperCase() + entity.slice(1)} updated Failed`
+        `${entity.charAt(0).toUpperCase() + entity.slice(1)} updated Failed ${
+          error.response.data.message
+        }`
       );
     }
   };
 
   const deleteData = async (entity, id) => {
+    dispatch(setLoading()); // Yükleme durumunu başlat
     try {
       await axiosWithToken.delete(`/${entity}/${id}`);
       await fetchData(entity); // Silindikten sonra verileri yeniden yükle
@@ -70,20 +80,24 @@ const useCrmCalls = () => {
       navigate(-1);
     } catch (error) {
       console.log(error);
+      dispatch(setError()); // Hata durumunu ayarla
       notifyError(
-        `${entity.charAt(0).toUpperCase() + entity.slice(1)} Deletion Failed`
+        `${entity.charAt(0).toUpperCase() + entity.slice(1)} Deletion Failed ${
+          error.response.data.message
+        }`
       );
     }
   };
 
   const sendMail = async (data) => {
-    console.log("data", data); // Veriyi burada kontrol edebilirsiniz.
+    dispatch(setLoading()); // Yükleme durumunu başlat
     try {
       await axiosWithToken.post("/mails", data);
       notifySuccess("Mail sent successfully");
     } catch (error) {
       console.log(error);
-      notifyError("Mail sending failed");
+      dispatch(setError()); // Hata durumunu ayarla
+      notifyError("Mail sending failed", error.response.data.message);
     }
   };
 
