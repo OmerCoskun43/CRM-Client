@@ -38,6 +38,7 @@ const useCrmCalls = () => {
     } catch (error) {
       console.log(error);
       dispatch(setError()); // Hata durumunu ayarla
+      navigate("/");
       notifyError(
         `${
           entity.charAt(0).toUpperCase() + entity.slice(1)
