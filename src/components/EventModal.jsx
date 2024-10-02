@@ -23,13 +23,19 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
     return date ? date.substring(0, 16) : ""; // 'YYYY-MM-DDTHH:MM' formatına dönüştür
   };
 
+  // Bugünün tarihini ve saatini formatlamak için bir fonksiyon
+  const getCurrentDateTime = () => {
+    const now = new Date();
+    return now.toISOString().substring(0, 16); // 'YYYY-MM-DDTHH:MM' formatı
+  };
+
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-50 flex justify-center z-50 items-center"
       onClick={onClose}
     >
       <div
-        className="bg-gradient-to-br from-green-600 to-gray-400 bg-opacity-100 rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 mt-8"
+        className="bg-gradient-to-br from-blue-600 to-gray-400 bg-opacity-100 rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 mt-8"
         onClick={(e) => e.stopPropagation()}
       >
         <h3 className="text-3xl font-bold mb-6 text-white text-center">
@@ -90,6 +96,7 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
                   : formData.eventDate
               }
               onChange={handleInputChange}
+              min={getCurrentDateTime()} // Günümüz tarih ve saatini min olarak ayarlama
               className="w-full p-2 rounded"
               required
             />

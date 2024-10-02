@@ -57,15 +57,15 @@ const EventDetail = () => {
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>User ID:</strong>
-          <span>{event.userId._id}</span>
+          <span>{event?.userId?._id}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>User:</strong>
-          <span>{event.userId.name}</span>
+          <span>{event.userId?.name}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>User Email:</strong>
-          <span>{event.userId.email}</span>
+          <span>{event.userId?.email}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>Customer ID:</strong>
