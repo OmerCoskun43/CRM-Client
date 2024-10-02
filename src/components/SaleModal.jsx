@@ -52,7 +52,11 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             <select
               name="customerId"
               id="customerId"
-              value={formData.customerId}
+              value={
+                typeof formData.customerId === "object"
+                  ? formData.customerId._id
+                  : formData.customerId
+              }
               onChange={handleInputChange}
               required
               className="w-full p-2 rounded"
@@ -73,7 +77,11 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             <select
               name="productId"
               id="productId"
-              value={formData.productId}
+              value={
+                typeof formData.productId === "object"
+                  ? formData.productId._id
+                  : formData.productId
+              }
               onChange={handleInputChange}
               required
               className="w-full p-2 rounded"

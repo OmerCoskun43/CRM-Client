@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Overview = () => {
   const { users, customers, products, sales, reviews } = useSelector(
@@ -42,33 +43,45 @@ const Overview = () => {
   )?.productId;
 
   return (
-    <section className="overview p-6 rounded-lg  bg-white ">
+    <section className="overview p-6 rounded-lg bg-white">
       <h2 className="text-2xl font-semibold mb-6 text-gray-800">Overview</h2>
       <div className="metrics grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-        <div className="bg-blue-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-blue-300 transition duration-200">
+        <Link
+          to="/users"
+          className="bg-blue-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-blue-300 transition duration-200"
+        >
           <h3 className="text-lg font-medium text-gray-700">Total Users</h3>
           <p className="text-xl font-bold text-gray-900">
             {users?.length || 0}
           </p>
-        </div>
-        <div className="bg-green-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-green-300 transition duration-200">
+        </Link>
+        <Link
+          to="/customers"
+          className="bg-green-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-green-300 transition duration-200"
+        >
           <h3 className="text-lg font-medium text-gray-700">Total Customers</h3>
           <p className="text-xl font-bold text-gray-900">
             {customers?.length || 0}
           </p>
-        </div>
-        <div className="bg-yellow-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-yellow-300 transition duration-200">
+        </Link>
+        <Link
+          to="/products"
+          className="bg-yellow-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-yellow-300 transition duration-200"
+        >
           <h3 className="text-lg font-medium text-gray-700">Total Products</h3>
           <p className="text-xl font-bold text-gray-900">
             {products?.length || 0}
           </p>
-        </div>
-        <div className="bg-red-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-red-300 transition duration-200">
+        </Link>
+        <Link
+          to="/sales"
+          className="bg-red-200 p-4 rounded-lg shadow-md cursor-pointer hover:bg-red-300 transition duration-200"
+        >
           <h3 className="text-lg font-medium text-gray-700">Total Sales</h3>
           <p className="text-xl font-bold text-gray-900">
             {sales?.length || 0}
           </p>
-        </div>
+        </Link>
       </div>
 
       <h3 className="text-2xl font-semibold mb-4 text-gray-800 border-b-2 border-gray-200 pb-2">

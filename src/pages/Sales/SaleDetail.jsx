@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import SaleModal from "../../components/SaleModal";
 import useCrmCalls from "../../service/useCrmCalls";
 import MailModal from "../../components/MailModal";
+import DetailSkeleton from "./DetailSkeleton"; // Detay Skeleton bileşeni
 
 const SaleDetail = () => {
   const { id } = useParams();
@@ -16,6 +17,8 @@ const SaleDetail = () => {
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [formData, setFormData] = useState({});
+  const [loading, setLoading] = useState(true); // Loading durumu
+  const [error, setError] = useState(null); // Hata durumu
 
   // URL'den gelen veriyi almak
   const saleDetail = sales?.find((sale) => sale._id === id);
@@ -24,11 +27,14 @@ const SaleDetail = () => {
     if (location.state) {
       setFormData(location.state);
     }
-  }, [location.state]);
-
-  if (!saleDetail) {
-    return <div className="p-6 text-center">Sale not found.</div>;
-  }
+    // Loading durumunu güncelle
+    if (saleDetail) {
+      setLoading(false);
+    } else {
+      setError("Sale not found.");
+      setLoading(false);
+    }
+  }, [location.state, saleDetail]);
 
   const handleDelete = async () => {
     if (confirm("Are you sure you want to delete this sale?")) {
@@ -51,6 +57,14 @@ const SaleDetail = () => {
     await sendMail(emailData);
     setMailModalOpen(false);
   };
+
+  if (loading) {
+    return <DetailSkeleton />; // Yükleniyorsa Skeleton göster
+  }
+
+  if (error) {
+    return <div className="p-6 text-center text-red-600">{error}</div>; // Hata durumu
+  }
 
   return (
     <div className="p-6 min-h-screen mt-20 mx-[-22px] md:mx-auto xs:w-[20rem] sm:w-[30rem] md:w-[630px] lg:w-[851px] relative">

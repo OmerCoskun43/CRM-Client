@@ -32,6 +32,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             "/departments",
             "/sales",
             "/users",
+            "/events",
+            "/reviews",
+            "/notes",
           ].map((path, index) => (
             <li className="mb-2" key={index}>
               <NavLink
