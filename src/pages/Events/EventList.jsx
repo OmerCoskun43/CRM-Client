@@ -92,11 +92,7 @@ const EventList = () => {
                 <tr
                   key={event._id}
                   className="hover:bg-gray-100 cursor-pointer transition-colors duration-200"
-                  onClick={() =>
-                    navigate(`/events/${event._id}`, {
-                      state: { eventDetail: event },
-                    })
-                  }
+                  onClick={() => navigate(`/events/${event._id}`)}
                 >
                   <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base text-black font-bold">
                     {event.eventType}

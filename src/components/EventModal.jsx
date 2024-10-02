@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-
 import { useSelector } from "react-redux";
 
 const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
@@ -19,14 +18,19 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
 
   if (!isOpen) return null;
 
+  // Tarih formatı için yardımcı fonksiyon
   const formatDate = (date) => {
-    return date ? date.substring(0, 16) : ""; // 'YYYY-MM-DDTHH:MM' formatına dönüştür
+    return date ? new Date(date).toISOString().substring(0, 16) : "";
   };
 
-  // Bugünün tarihini ve saatini formatlamak için bir fonksiyon
+  // Bugünün tarih ve saatini almak için yardımcı fonksiyon
   const getCurrentDateTime = () => {
     const now = new Date();
-    return now.toISOString().substring(0, 16); // 'YYYY-MM-DDTHH:MM' formatı
+    const timezoneOffset = now.getTimezoneOffset() * 60000;
+    const localISOTime = new Date(now - timezoneOffset)
+      .toISOString()
+      .slice(0, 16);
+    return localISOTime;
   };
 
   return (
@@ -90,11 +94,7 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
               type="datetime-local"
               name="eventDate"
               id="eventDate"
-              value={
-                formData.eventDate
-                  ? formatDate(formData.eventDate)
-                  : formData.eventDate
-              }
+              value={formatDate(formData.eventDate) || getCurrentDateTime()}
               onChange={handleInputChange}
               min={getCurrentDateTime()} // Günümüz tarih ve saatini min olarak ayarlama
               className="w-full p-2 rounded"
@@ -120,21 +120,18 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             <button
               type="button"
               onClick={onClose}
-              className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition w-full mr-2"
+              className="bg-red-600 text-white py-2 px-4 rounded w-full hover:bg-red-700 transition mr-2"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition w-full"
+              className="bg-blue-600 text-white py-2 px-4 rounded w-full hover:bg-blue-700 transition"
             >
               {formData?._id ? "Update Event" : "Create Event"}
             </button>
           </div>
         </form>
-        <button onClick={onClose} className="absolute top-2 right-2 text-white">
-          X
-        </button>
       </div>
     </div>
   );

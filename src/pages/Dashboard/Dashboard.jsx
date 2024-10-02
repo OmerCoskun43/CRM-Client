@@ -12,8 +12,9 @@ const Dashboard = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { fetchData } = useCrmCalls();
   const { isModalOpen, handleConfirmRefresh, handleCloseModal } = useToken();
-  const error = useSelector((state) => state.crm.error); // Redux'dan error durumu
-
+  const { error } = useSelector((state) => state.crm); // Redux'dan error durumu
+  const { accessToken } = useSelector((state) => state.user);
+  console.log("accessToken", accessToken);
   useEffect(() => {
     const fetchAllData = async () => {
       try {

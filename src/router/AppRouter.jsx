@@ -19,6 +19,10 @@ import UserList from "../pages/Users/UserList";
 import UserDetail from "../pages/Users/UserDetail";
 import EventList from "../pages/Events/EventList";
 import EventDetail from "../pages/Events/EventDetail";
+import ReviewList from "../pages/Reviews/ReviewList";
+import ReviewDetail from "../pages/Reviews/ReviewDetail";
+import NoteList from "../pages/Notes/NoteList";
+import NoteDetail from "../pages/Notes/NoteDetail";
 
 const AppRouter = () => {
   return (
@@ -44,6 +48,10 @@ const AppRouter = () => {
           <Route path="/users/:id" element={<UserDetail />} />
           <Route path="/events" element={<EventList />} />
           <Route path="/events/:id" element={<EventDetail />} />
+          <Route path="/reviews" element={<ReviewList />} />
+          <Route path="/reviews/:id" element={<ReviewDetail />} />
+          <Route path="/notes" element={<NoteList />} />
+          <Route path="/notes/:id" element={<NoteDetail />} />
         </Route>
       </Route>
       <Route path="*" element={<NotFound />} />

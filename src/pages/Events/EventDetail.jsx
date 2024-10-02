@@ -40,6 +40,11 @@ const EventDetail = () => {
     setModalOpen(false);
   };
 
+  // Tarihleri aynı formatta göstermek için bir yardımcı fonksiyon
+  const formatDate = (date) => {
+    return new Date(date).toLocaleString("sv-SE", { timeZoneName: "short" });
+  };
+
   return (
     <div className="p-6 min-h-screen mt-20 mx-auto relative">
       <h2 className="text-3xl font-bold text-gray-900 mb-4 text-center">
@@ -77,7 +82,7 @@ const EventDetail = () => {
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>Date:</strong>
-          <span>{new Date(event.eventDate).toLocaleString()}</span>
+          <span>{formatDate(event.eventDate)}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>Details:</strong>
@@ -85,11 +90,11 @@ const EventDetail = () => {
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>Created At:</strong>
-          <span>{new Date(event.createdAt).toLocaleString()}</span>
+          <span>{formatDate(event.createdAt)}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>Updated At:</strong>
-          <span>{new Date(event.updatedAt).toLocaleString()}</span>
+          <span>{formatDate(event.updatedAt)}</span>
         </p>
 
         <div className="flex justify-between mt-6">
