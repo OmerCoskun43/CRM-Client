@@ -15,6 +15,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import auth from "../auth/firebase";
+import { crmLogout } from "../features/crmSlice";
 
 const useAuthCalls = () => {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ const useAuthCalls = () => {
     try {
       await axiosWithToken.get("/auth/logout");
       dispatch(logout());
+      dispatch(crmLogout());
       notifySuccess("Logout Successful");
     } catch (error) {
       console.log(

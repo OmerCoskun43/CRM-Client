@@ -38,8 +38,22 @@ const crmSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
+    crmLogout: (state) => {
+      state.loading = false;
+      state.error = null;
+      state.departments = [];
+      state.categories = [];
+      state.products = [];
+      state.customers = [];
+      state.sales = [];
+      state.events = [];
+      state.tasks = [];
+      state.users = [];
+      state.notes = [];
+      state.reviews = [];
+    },
   },
 });
 
-export const { setData, setLoading, setError } = crmSlice.actions;
+export const { setData, setLoading, setError, crmLogout } = crmSlice.actions;
 export default crmSlice.reducer;
