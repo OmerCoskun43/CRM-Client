@@ -25,12 +25,13 @@ const Dashboard = () => {
           fetchData("customers"),
           fetchData("departments"),
           fetchData("categories"),
+          fetchData("tasks"),
           fetchData("events"),
           fetchData("reviews"),
           fetchData("notes"),
         ]);
         notifySuccess(
-          "Users, products, sales, events, reviews, notes, reviews, customers, departments and categories fetched successfully"
+          "Users, products, sales, events, reviews, notes, reviews, customers, tasks, departments and categories fetched successfully"
         );
       } catch (error) {
         console.error("Error fetching data:", error);

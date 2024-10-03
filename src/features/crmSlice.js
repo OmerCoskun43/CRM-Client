@@ -8,6 +8,7 @@ const initialState = {
   customers: [],
   sales: [],
   events: [],
+  tasks: [],
   users: [],
   notes: [],
   reviews: [],

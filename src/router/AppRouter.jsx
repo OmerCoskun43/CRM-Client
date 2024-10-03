@@ -24,6 +24,8 @@ import ReviewDetail from "../pages/Reviews/ReviewDetail";
 import NoteList from "../pages/Notes/NoteList";
 import NoteDetail from "../pages/Notes/NoteDetail";
 import Profile from "../pages/Profile/Profile";
+import TaskList from "../pages/Tasks/TaskList";
+import TaskDetail from "../pages/Tasks/TaskDetail";
 
 const AppRouter = () => {
   return (
@@ -52,7 +54,10 @@ const AppRouter = () => {
           <Route path="/reviews" element={<ReviewList />} />
           <Route path="/reviews/:id" element={<ReviewDetail />} />
           <Route path="/notes" element={<NoteList />} />
+          <Route path="/notes" element={<NoteList />} />
           <Route path="/notes/:id" element={<NoteDetail />} />
+          <Route path="/tasks" element={<TaskList />} />
+          <Route path="/tasks/:id" element={<TaskDetail />} />
         </Route>
       </Route>
       <Route path="*" element={<NotFound />} />

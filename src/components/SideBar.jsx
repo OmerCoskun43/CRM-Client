@@ -31,6 +31,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             "/products",
             "/departments",
             "/sales",
+            "/tasks",
             "/users",
             "/events",
             "/reviews",
