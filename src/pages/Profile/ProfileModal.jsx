@@ -48,6 +48,12 @@ const ProfileModal = ({ user, onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (!formData.departmentId) {
+      // Eğer department seçilmemişse bir hata mesajı göster
+      alert("Please select a department.");
+      return;
+    }
+
     const dataToSubmit = new FormData();
 
     // FormData'ya ekle
