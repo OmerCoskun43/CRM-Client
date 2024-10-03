@@ -49,7 +49,11 @@ const DepartmentList = () => {
               <tr
                 key={department._id}
                 className="hover:bg-gray-100 cursor-pointer transition-colors duration-200"
-                onClick={() => navigate(`/departments/${department._id}`)}
+                onClick={
+                  user?.isAdmin
+                    ? () => navigate(`/departments/${department._id}`)
+                    : undefined
+                }
               >
                 <td className="py-3 px-2 md:px-4 border-b text-sm md:text-base text-black font-bold">
                   {department.name}
