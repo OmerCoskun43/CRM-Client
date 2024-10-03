@@ -10,8 +10,8 @@ const ProfileModal = ({ user, onClose, onSubmit }) => {
     email: user?.email || "",
     password: "", // Şifre alanı
     departmentId: user.departmentId?._id || "",
-    isAdmin: user?.isAdmin || false,
-    isLead: user?.isLead || false,
+    // isAdmin: user?.isAdmin || false,
+    // isLead: user?.isLead || false,
     profilePic: null, // Profil resmini tutacak alan
   });
 
