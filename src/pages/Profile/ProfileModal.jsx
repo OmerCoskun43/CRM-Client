@@ -48,8 +48,8 @@ const ProfileModal = ({ user, onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.departmentId) {
-      // Eğer department seçilmemişse bir hata mesajı göster
+    // Eğer admin değilse, departmentId'nin doldurulmuş olduğundan emin ol
+    if (!user?.isAdmin && !formData.departmentId) {
       alert("Please select a department.");
       return;
     }
@@ -62,14 +62,20 @@ const ProfileModal = ({ user, onClose, onSubmit }) => {
     if (formData.password) {
       dataToSubmit.append("password", formData.password); // Şifre mevcutsa ekle
     }
-    dataToSubmit.append("departmentId", formData.departmentId);
+
+    // Eğer admin değilse departmentId'yi ekle
+    if (!user?.isAdmin) {
+      dataToSubmit.append("departmentId", formData.departmentId);
+    }
+
     dataToSubmit.append("isAdmin", formData.isAdmin);
     dataToSubmit.append("isLead", formData.isLead);
+
     if (formData.profilePic) {
       dataToSubmit.append("profilePic", formData.profilePic); // Profil resmi mevcutsa ekle
     }
 
-    onSubmit(dataToSubmit); // Güncelleme işlemi
+    onSubmit(dataToSubmit); // Formu gönder
   };
 
   return (
