@@ -22,8 +22,8 @@ const ProfileModal = ({ user, onClose, onSubmit }) => {
         email: user.email,
         password: "", // Şifreyi boş bırakıyoruz
         departmentId: user.departmentId?._id,
-        isAdmin: user.isAdmin,
-        isLead: user.isLead,
+        // isAdmin: user.isAdmin,
+        // isLead: user.isLead,
         profilePic: null, // Başlangıçta profil resmi yok
       });
     }
