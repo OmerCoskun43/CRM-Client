@@ -60,7 +60,7 @@ const NoteList = () => {
                 Created At
               </th>
               <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
-                Customer ID
+                Customer Name
               </th>
             </tr>
           </thead>
@@ -78,7 +78,7 @@ const NoteList = () => {
                   {new Date(note.createdAt).toLocaleString()}
                 </td>
                 <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
-                  {note.customerId?._id}
+                  {note.customerId?.name}
                 </td>
               </tr>
             ))}

@@ -4,43 +4,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import DetailSkeleton from "./DetailSkeleton"; // Detay Skeleton bileşeni
 import useCrmCalls from "../../service/useCrmCalls"; // CRUD işlemleri için servis
 import ReviewModal from "../../components/ReviewModal";
-import { useEffect, useState } from "react";
-import useAxios from "../../service/useAxios";
-import { notifyError, notifyInfo, notifySuccess } from "../../helper/HotToast";
+import { useState } from "react";
+
+import { useSelector } from "react-redux";
 
 const ReviewDetail = () => {
   const navigate = useNavigate();
   const { deleteData, updateData, loading, error } = useCrmCalls();
   const [isModalOpen, setModalOpen] = useState(false);
   const [formData, setFormData] = useState({});
-  // const { reviews } = useSelector((state) => state.crm);
+  const { reviews } = useSelector((state) => state.crm);
   const { id } = useParams();
-  const [review, setReview] = useState(null);
-  const { axiosWithToken } = useAxios();
-  const fetchData = async () => {
-    try {
-      const { data } = axiosWithToken.get(`/reviews/${id}`);
-
-      setReview(data);
-
-      notifySuccess("Review fetched successfully");
-    } catch (error) {
-      console.log(error);
-      notifyError("Review fetching failed", error.response.data.message);
-
-      setTimeout(() => {
-        notifyInfo("Redirecting...");
-        navigate("/reviews");
-      }, 3000);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // const [review, setReview] = useState(null);
 
   // İncelemeyi bul
-  // const review = reviews.find((r) => r._id === id);
+  const review = reviews.find((r) => r._id === id);
 
   // Loading durumu için skeleton göster
   if (loading) {
@@ -49,7 +27,7 @@ const ReviewDetail = () => {
 
   // İnceleme bulunamadığında hata mesajı göster
   if (!review && !loading) {
-    return <div className="p-6 text-center">Review not found.</div>;
+    return <div className="p-6 text-center mt-40">Review not found.</div>;
   }
 
   // Hata durumu

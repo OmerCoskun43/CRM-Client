@@ -88,33 +88,36 @@ const Profile = () => {
         Profile Information
       </h2>
 
-      <div className="relative group flex flex-col items-center mb-6">
+      <div
+        onClick={() => setShowImageModal(true)}
+        className="relative group flex flex-col items-center mb-6"
+      >
         {/* Kullanıcı Resmi */}
-        {user?.profilePic || user?.photoURL ? (
-          <img
-            src={
-              user?.profilePic
-                ? user?.profilePic.includes("https")
-                  ? user?.profilePic
-                  : `${import.meta.env.VITE_BASE_URL}${user.profilePic}`
-                : user?.photoURL || "defaultProfilePic.png" // Varsayılan bir resim kullanabilirsiniz
-            }
-            alt="Profile"
-            className="w-32 h-32 object-cover rounded-full cursor-pointer "
-          />
-        ) : (
-          <div className="w-32 h-32  rounded-full bg-gray-200 flex items-center justify-center text-gray-600 font-bold text-2xl shadow-md">
-            N/A
+        <div className="relative w-32 h-32 rounded-full overflow-hidden">
+          {user?.profilePic || user?.photoURL ? (
+            <img
+              src={
+                user?.profilePic
+                  ? user?.profilePic.includes("https")
+                    ? user?.profilePic
+                    : `${import.meta.env.VITE_BASE_URL}${user.profilePic}`
+                  : user?.photoURL || "defaultProfilePic.png"
+              }
+              alt="Profile"
+              className="w-full h-full object-cover rounded-full cursor-pointer"
+            />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center rounded-full bg-gray-200 text-gray-600 font-bold text-2xl shadow-md ">
+              N/A
+            </div>
+          )}
+
+          {/* Update Picture Text */}
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer duration-200">
+            <span className="text-white text-sm font-semibold">
+              Update Picture
+            </span>
           </div>
-        )}
-
-        {/* Hover yapıldığında çıkan yazı */}
-
-        <div
-          onClick={() => setShowImageModal(true)}
-          className="absolute inset-0 flex text-center top-0 left-[43.1%] flex-col  items-center justify-center bg-black bg-opacity-50 text-white opacity-0 group-hover:opacity-100 w-32 h-32 transition-opacity duration-300 rounded-full cursor-pointer"
-        >
-          <span className="text-sm">Change Profile Picture</span>
         </div>
 
         {/* Kullanıcı ismi */}

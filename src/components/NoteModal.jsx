@@ -16,6 +16,13 @@ const NoteModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
     onClose();
   };
 
+  // Enter tuşuna basıldığında formu gönder
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit(e);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -63,6 +70,7 @@ const NoteModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
               id="content"
               value={formData.content || ""}
               onChange={handleInputChange}
+              onKeyDown={handleKeyDown} // Enter tuşunu dinle
               className="w-full p-2 rounded"
               required
             />

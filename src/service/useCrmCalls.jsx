@@ -78,7 +78,7 @@ const useCrmCalls = () => {
           entity.charAt(0).toUpperCase() + entity.slice(1)
         } Deleted Successfully`
       );
-      if(entity !== "users"){
+      if (entity !== "users") {
         navigate(-1);
       }
     } catch (error) {

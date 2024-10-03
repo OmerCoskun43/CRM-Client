@@ -12,13 +12,20 @@ const UserModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
 
   const handleRemoveFile = () => {
     setProfilePic(null);
-    // Sıfırlama işlemi
     document.getElementById("profilePic").value = "";
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+
+    // Eğer departmentId değişiyorsa, onu da düzenleyelim
+    if (name === "departmentId") {
+      // console.log("value", value);
+      const selectedDepartment = departments.find((dept) => dept._id === value);
+      console.log("selectedDepartment", selectedDepartment);
+      setFormData({ ...formData, departmentId: selectedDepartment });
+    }
   };
 
   const handleSubmit = (e) => {
@@ -28,7 +35,15 @@ const UserModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
     const formDataToSend = new FormData();
     formDataToSend.append("name", formData.name);
     formDataToSend.append("email", formData.email);
-    formDataToSend.append("departmentId", formData.departmentId._id);
+
+    // departmentId'nin bir değeri olup olmadığını kontrol et
+    if (formData.departmentId && formData.departmentId._id) {
+      formDataToSend.append("departmentId", formData.departmentId._id);
+    } else {
+      // Uygun bir hata mesajı göstermek için buraya bir şey ekleyebilirsiniz
+      alert("Please select a valid department.");
+      return; // Departman seçilmediyse işlemi durdur
+    }
 
     if (profilePic) {
       formDataToSend.append("profilePic", profilePic); // Profil resmini ekle
@@ -40,6 +55,8 @@ const UserModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
   };
 
   if (!isOpen) return null;
+
+  console.log("formData", formData);
 
   return (
     <div
@@ -92,7 +109,7 @@ const UserModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
               name="departmentId"
               id="departmentId"
               className="w-full p-2 rounded"
-              value={formData.departmentId?._id}
+              value={formData.departmentId ? formData.departmentId._id : ""}
               onChange={handleInputChange}
             >
               <option value="">Select Department</option>

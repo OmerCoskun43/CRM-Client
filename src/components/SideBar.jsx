@@ -27,9 +27,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <ul className="text-start font-bold ps-2">
           {[
             "/",
+            "/departments",
             "/customers",
             "/products",
-            "/departments",
             "/sales",
             "/tasks",
             "/users",

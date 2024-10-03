@@ -49,14 +49,17 @@ const Login = () => {
         {({ values }) => (
           <Form>
             <div className="mb-4">
-              <label htmlFor="email" className="block mb-2">
+              <label
+                htmlFor="email"
+                className="font-montserrat text-label text-labelColor hover:cursor-pointer hover:after:content-['omer@omer.com'] hover:after:text-black hover:after:pl-3 hover:after:underline"
+              >
                 Email
               </label>
               <Field
                 type="email"
                 id="email"
                 name="email"
-                className="border border-gray-300 rounded p-2 w-full peer"
+                className="border border-gray-300 rounded p-2 w-full peer focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
               <div className="">
                 <p
@@ -73,14 +76,17 @@ const Login = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="password" className="block mb-2">
+              <label
+                htmlFor="password"
+                className="font-montserrat text-label text-labelColor hover:cursor-pointer hover:after:content-['Omer123!'] hover:after:text-black hover:after:pl-3 hover:after:underline"
+              >
                 Password
               </label>
               <Field
                 type="password"
                 id="password"
                 name="password"
-                className="border border-gray-300 rounded p-2 w-full"
+                className="border border-gray-300 rounded p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-600"
               />
               <ErrorMessage
                 name="password"

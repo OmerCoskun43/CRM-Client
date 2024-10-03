@@ -45,10 +45,10 @@ const DetailSkeleton = () => {
             Delete Product
           </button>
           <button className="bg-gray-300 absolute top-0 right-0 text-white py-2 px-4 rounded hover:bg-blue-700 transition ml-2">
-            Edit Product
+            Go Back
           </button>
           <button className="bg-gray-300 text-white py-2 px-4 rounded hover:bg-green-700 transition w-full">
-            Go Back
+            Edit Product
           </button>
         </div>
       </div>

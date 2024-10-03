@@ -61,7 +61,6 @@ const CustomerDetail = () => {
 
   const handleUpdate = (updatedData) => {
     updateData("customers", customer._id, updatedData);
-    console.log(updatedData);
     setIsUpdateModalOpen(false);
   };
 

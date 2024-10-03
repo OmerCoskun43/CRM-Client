@@ -7,7 +7,7 @@ const Overview = () => {
   );
 
   const latestUser = users
-    .filter((user) => !user.isAdmin && !user.isLead)
+    ?.filter((user) => !user.isAdmin && !user.isLead)
     .reduce((prev, current) => {
       return new Date(prev?.lastLogin) > new Date(current?.lastLogin)
         ? prev

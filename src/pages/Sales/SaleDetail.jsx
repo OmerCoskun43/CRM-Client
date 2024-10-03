@@ -73,16 +73,16 @@ const SaleDetail = () => {
       </h2>
       <div className="bg-gray-50 shadow-lg rounded-lg p-6 relative border border-gray-200">
         <h3 className="text-2xl font-semibold text-gray-800 mb-4">
-          Product: {saleDetail.productId.name}
+          Product: {saleDetail?.productId.name}
         </h3>
         <p className="text-gray-700">
-          <strong>Customer Name:</strong> {saleDetail.customerId.name}
+          <strong>Customer Name:</strong> {saleDetail?.customerId.name}
         </p>
         <p className="text-gray-700">
-          <strong>Customer ID:</strong> {saleDetail.customerId._id}
+          <strong>Customer ID:</strong> {saleDetail?.customerId._id}
         </p>
         <p className="text-gray-700">
-          <strong>Email:</strong> {saleDetail.customerId.email}
+          <strong>Email:</strong> {saleDetail?.customerId.email}
           <span
             onClick={() => setMailModalOpen(true)}
             className="bg-slate-500 hover:bg-slate-600 text-white px-2 py-1 absolute right-0 cursor-pointer rounded ml-2"
@@ -91,32 +91,32 @@ const SaleDetail = () => {
           </span>
         </p>
         <p className="text-gray-700">
-          <strong>Phone:</strong> {saleDetail.customerId.phone}
+          <strong>Phone:</strong> {saleDetail?.customerId.phone}
         </p>
         <p className="text-gray-700">
-          <strong>Address:</strong> {saleDetail.customerId.address}
+          <strong>Address:</strong> {saleDetail?.customerId.address}
         </p>
         <p className="text-gray-700">
-          <strong>Quantity:</strong> {saleDetail.quantity}
+          <strong>Quantity:</strong> {saleDetail?.quantity}
         </p>
         <p className="text-gray-700">
-          <strong>Unit Price:</strong> {saleDetail.price}₺
+          <strong>Unit Price:</strong> {saleDetail?.price}₺
         </p>
         <p className="text-gray-700">
-          <strong>Total Price:</strong> {saleDetail.totalPrice}₺
+          <strong>Total Price:</strong> {saleDetail?.totalPrice}₺
         </p>
         <p className="text-gray-700">
-          <strong>Payment Method:</strong> {saleDetail.paymentMethod}
+          <strong>Payment Method:</strong> {saleDetail?.paymentMethod}
         </p>
         <p className="text-gray-700">
-          <strong>Status:</strong> {saleDetail.status}
+          <strong>Status:</strong> {saleDetail?.status}
         </p>
         <p className="text-gray-700">
-          <strong>Total Profit:</strong> {saleDetail.totalProfit}₺
+          <strong>Total Profit:</strong> {saleDetail?.totalProfit}₺
         </p>
         <p className="text-gray-700">
           <strong>Sale Date:</strong>{" "}
-          {new Date(saleDetail.saleDate).toLocaleString()}
+          {new Date(saleDetail?.saleDate).toLocaleString()}
         </p>
 
         <div className="flex justify-between mt-6">

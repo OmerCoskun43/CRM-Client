@@ -81,8 +81,8 @@ const NoteDetail = () => {
           <span>{note.customerId?.name}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4 ">
-          <strong className="w-[20%]">Content:</strong>
-          <span className="w-[80%]">{note.content}</span>
+          <strong>Content:</strong>
+          <span>{note.content}</span>
         </p>
         <p className="text-gray-700 flex justify-between items-center mt-4">
           <strong>Created At:</strong>

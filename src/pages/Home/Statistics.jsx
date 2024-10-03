@@ -26,18 +26,29 @@ const Statistics = () => {
     monthlySales[month]++;
   });
 
-  // En çok satan ürünü bul
-  const productSales = sales.reduce((acc, { productId }) => {
-    acc.set(productId._id, (acc.get(productId._id) || 0) + 1);
+  // En çok satan ürünü bul ve toplam satış rakamını hesapla
+  const productSales = sales.reduce((acc, sale) => {
+    const { productId, quantity } = sale; // productId ve quantity'yi al
+
+    if (productId && productId._id) {
+      // Eğer productId varsa, satış miktarını artır
+      acc.set(productId._id, (acc.get(productId._id) || 0) + quantity);
+    }
     return acc;
   }, new Map());
+
+  // Ürünleri satış miktarına göre sıralayın
   const sortedSales = [...productSales.entries()].sort(
     ([, qtyA], [, qtyB]) => qtyB - qtyA
   );
-  const [topSellingProductId, topSellingQuantity] = sortedSales[0] || ["", 0];
-  const topSellingProduct = products.find(
-    (product) => product._id === topSellingProductId
-  );
+
+  // En çok satan ürünün ID'sini ve miktarını alın
+  const [topSellingProductId, topSellingQuantity] = sortedSales[0] || [null, 0];
+
+  // En çok satan ürün bilgilerini alın
+  const topSellingProduct = topSellingProductId
+    ? products.find((product) => product._id === topSellingProductId)
+    : null;
 
   // Kullanıcı oturum açma sayısını hesapla
   const userLogins = users.reduce(
@@ -98,7 +109,6 @@ const Statistics = () => {
           Total Sales: <strong>{totalSales}</strong>
         </p>
       </div>
-
       <h3 className="text-xl font-semibold mb-2">Product Performance</h3>
       <div className="p-4 border rounded-lg bg-gray-100 shadow">
         Top Selling Product: <strong>{topSellingProduct?.name || "N/A"}</strong>{" "}
