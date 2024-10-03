@@ -49,7 +49,11 @@ const useAuthCalls = () => {
       notifySuccess("Login Successful");
       navigate("/");
     } catch (error) {
-      console.log("Login error:", error); // Hata günlüğü
+      console.log(
+        "Login error:",
+        error.response.data.message,
+        error.response.data.stack
+      ); // Hata günlüğü
       notifyError("Login Failed", error.response.data.message);
     }
   };
@@ -60,7 +64,11 @@ const useAuthCalls = () => {
       dispatch(logout());
       notifySuccess("Logout Successful");
     } catch (error) {
-      console.log("Logout error:", error); // Hata günlüğü
+      console.log(
+        "Logout error:",
+        error.presponse.data.message,
+        error.response.data.stack
+      ); // Hata günlüğü
       notifyError("Logout Failed", error.response.data.message);
     }
   };
@@ -72,7 +80,7 @@ const useAuthCalls = () => {
       notifySuccess("Register Successful");
       navigate("/");
     } catch (error) {
-      console.log("Register error:", error); // Hata günlüğü
+      console.log("Register error:", error.response.data.message); // Hata günlüğü
       notifyError("Register Failed", error.response.data.message);
     }
   };
@@ -85,7 +93,7 @@ const useAuthCalls = () => {
       dispatch(refresh(data));
       notifySuccess("Refreshed successfully");
     } catch (error) {
-      console.log(error);
+      console.log("Refresh token error", error.response.data.message);
       notifyError("Refresh failed", error.response.data.message);
     }
   };

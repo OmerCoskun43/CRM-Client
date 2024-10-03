@@ -23,6 +23,7 @@ import ReviewList from "../pages/Reviews/ReviewList";
 import ReviewDetail from "../pages/Reviews/ReviewDetail";
 import NoteList from "../pages/Notes/NoteList";
 import NoteDetail from "../pages/Notes/NoteDetail";
+import Profile from "../pages/Profile/Profile";
 
 const AppRouter = () => {
   return (
@@ -35,7 +36,7 @@ const AppRouter = () => {
             <Route index element={<Overview />} />
             <Route path="/statistics" element={<Statistics />} />
           </Route>
-
+          <Route path="/profile" element={<Profile />} />
           <Route path="/customers" element={<CustomerList />} />
           <Route path="/customers/:id" element={<CustomerDetail />} />
           <Route path="/products" element={<ProductList />} />

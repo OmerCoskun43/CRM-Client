@@ -15,7 +15,7 @@ const useCrmCalls = () => {
       const { data } = await axiosWithToken.get(`/${entity}`);
       dispatch(setData({ entity, data }));
     } catch (error) {
-      console.log(error);
+      console.log("error", error.response.data.message);
       dispatch(setError()); // Hata durumunu ayarla
       notifyError(
         `${entity.charAt(0).toUpperCase() + entity.slice(1)} Loading Failed ${
@@ -36,7 +36,7 @@ const useCrmCalls = () => {
       );
       await fetchData(entity);
     } catch (error) {
-      console.log(error);
+      console.log("error", error.response.data.message);
       dispatch(setError()); // Hata durumunu ayarla
       navigate("/");
       notifyError(
@@ -58,7 +58,7 @@ const useCrmCalls = () => {
       );
       await fetchData(entity);
     } catch (error) {
-      console.log(error);
+      console.log("updateData error", error.response.data.message);
       dispatch(setError()); // Hata durumunu ayarla
       notifyError(
         `${entity.charAt(0).toUpperCase() + entity.slice(1)} updated Failed ${
@@ -78,9 +78,11 @@ const useCrmCalls = () => {
           entity.charAt(0).toUpperCase() + entity.slice(1)
         } Deleted Successfully`
       );
-      navigate(-1);
+      if(entity !== "users"){
+        navigate(-1);
+      }
     } catch (error) {
-      console.log(error);
+      console.log("error", error.response.data.message);
       dispatch(setError()); // Hata durumunu ayarla
       notifyError(
         `${entity.charAt(0).toUpperCase() + entity.slice(1)} Deletion Failed ${

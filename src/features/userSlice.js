@@ -29,8 +29,11 @@ const userSlice = createSlice({
     refresh(state, action) {
       state.accessToken = action.payload.accessToken;
     },
+    update: (state, action) => {
+      state.user = action.payload.data; // Kullanıcı bilgilerini ayarlayın
+    },
   },
 });
 
-export const { login, logout, register, refresh } = userSlice.actions;
+export const { login, logout, register, refresh, update } = userSlice.actions;
 export default userSlice.reducer;

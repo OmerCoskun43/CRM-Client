@@ -73,6 +73,19 @@ function Navbar() {
                     </Link>
                   )}
                 </Menu.Item>
+
+                <Menu.Item>
+                  {({ active }) => (
+                    <Link
+                      to="/profile"
+                      className={`block px-4 py-2 ${
+                        active ? "bg-gray-200" : ""
+                      }`}
+                    >
+                      Profile
+                    </Link>
+                  )}
+                </Menu.Item>
                 <Menu.Item>
                   {({ active }) => (
                     <Link
