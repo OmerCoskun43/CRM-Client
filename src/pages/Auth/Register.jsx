@@ -38,10 +38,17 @@ const Register = () => {
 
   const handleSubmit = (values) => {
     const formData = new FormData();
+    const selectedDepartment = departments.find(
+      (dept) => dept._id === values.departmentId
+    );
+    formData.append(
+      "departmentId",
+      selectedDepartment?._id || values.departmentId
+    );
+
     formData.append("name", values.name);
     formData.append("email", values.email);
     formData.append("password", values.password);
-    formData.append("departmentId", values.departmentId);
     formData.append("profilePic", profilePic); // Append the file
 
     registerSuccess(formData);
