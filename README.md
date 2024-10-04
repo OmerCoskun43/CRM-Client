@@ -1,4 +1,7 @@
+![CPT2410041204-1333x648](https://github.com/user-attachments/assets/36a56774-5ebb-470f-ab23-92422aab1cd0)![CPT2410041204-1333x648](https://github.com/user-attachments/assets/6602bd4a-8e1a-4fa9-8bbb-f53a250ce969)
+
 <p>Tıkla </p> <a href="https://crm-client-bay.vercel.app/" target="_blank">CRM Client</a> 
+
 <h1 style="text-align: center; color: red;">CRM Project</h1>
 
 <p style="font-size: 1.1em; line-height: 1.5;">
