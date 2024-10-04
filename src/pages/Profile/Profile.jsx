@@ -15,6 +15,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const { deleteData, loading, error } = useCrmCalls(); // Loading ve error'u alıyoruz
   const [showImageModal, setShowImageModal] = useState(false); // Resim modal'ı için state
+  const [isLoadingProfile, setIsLoadingProfile] = useState(true); // Yeni state: Profilin yüklenip yüklenmediğini takip ediyoruz
 
   const handleModalOpen = () => {
     setShowModal(true);
@@ -35,9 +36,7 @@ const Profile = () => {
         updatedUser
       );
       dispatch(update(data));
-
       notifySuccess("Profile Updated Successfully");
-
       setShowModal(false);
     } catch (error) {
       console.log("update User Error", error.response.data.message);
@@ -70,17 +69,22 @@ const Profile = () => {
     }
   };
 
+  // Profil yüklemesi tamamlandığında state'i güncelle
   useEffect(() => {
-    setShowModal(false);
+    if (user?.name && user?.departmentId) {
+      setIsLoadingProfile(false); // Profil bilgileri varsa yükleme tamamlanmış demektir
+    }
   }, [user]);
 
-  if (loading) {
-    return <ProfileSkeleton />; // Loading durumunda skeleton göstereceğiz
+  if (loading || isLoadingProfile) {
+    return <ProfileSkeleton />; // Loading veya profil yükleniyorsa skeleton göstereceğiz
   }
 
   if (error) {
     return <div className="text-red-500">Failed to load profile: {error}</div>;
   }
+
+  console.log("user", user);
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen mt-20 mx-[-24px] md:mx-0">
@@ -166,9 +170,7 @@ const Profile = () => {
                 Name
               </td>
               <td className="py-3 px-2 md:px-4 border-b text-[10px] md:text-base">
-                {user?.name
-                  ? user.name[0].toUpperCase() + user.name.slice(1)
-                  : "N/A"}
+                {user?.name || "N/A"}
               </td>
             </tr>
             <tr className="hover:bg-gray-100 cursor-pointer transition-colors duration-200">
