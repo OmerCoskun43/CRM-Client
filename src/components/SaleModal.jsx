@@ -45,7 +45,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
           {initialData?._id ? "Edit Sale" : "Create Sale"}
         </h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <div>
             <label htmlFor="customerId" className="block text-white mb-2">
               Customer
             </label>
@@ -70,7 +70,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="productId" className="block text-white mb-2">
               Product
             </label>
@@ -95,7 +95,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="quantity" className="block text-white mb-2">
               Quantity
             </label>
@@ -111,7 +111,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="price" className="block text-white mb-2">
               Price
             </label>
@@ -127,7 +127,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="paymentMethod" className="block text-white mb-2">
               Payment Method
             </label>
@@ -145,7 +145,7 @@ const SaleModal = ({ isOpen, onClose, onSubmit, initialData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="status" className="block text-white mb-2">
               Status
             </label>

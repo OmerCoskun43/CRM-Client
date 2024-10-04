@@ -27,8 +27,12 @@ const NoteDetail = () => {
   }
 
   // Hata durumu
-  if (error) {
-    return <div className="text-red-500 text-center">{error.message}</div>;
+  if (!error) {
+    return (
+      <div className="text-red-500 text-center mt-40">
+        Error occurred while fetching note.
+      </div>
+    );
   }
 
   // Tarih formatı için yardımcı fonksiyon

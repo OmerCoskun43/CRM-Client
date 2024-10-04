@@ -38,7 +38,7 @@ const NoteModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
           {formData?._id ? "Edit Note" : "Create Note"}
         </h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <div>
             <label htmlFor="customerId" className="block text-white mb-2">
               Customer
             </label>
@@ -61,7 +61,7 @@ const NoteModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="content" className="block text-white mb-2">
               Note Content
             </label>

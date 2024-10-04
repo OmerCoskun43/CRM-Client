@@ -27,11 +27,16 @@ const ProductDetail = () => {
   }
 
   if (error) {
-    return <div className="p-6 text-center text-red-600">{error}</div>; // Hata durumu
+    return (
+      <div className="p-6 text-center text-red-600 mt-40">
+        {" "}
+        Error occurred while fetching product.{" "}
+      </div>
+    ); // Hata durumu
   }
 
   if (!product) {
-    return <div className="p-6 text-center">Product not found.</div>;
+    return <div className="p-6 text-center mt-40">Product not found.</div>;
   }
 
   const handleDelete = () => {
@@ -51,7 +56,7 @@ const ProductDetail = () => {
   };
 
   return (
-    <div className="p-6 min-h-screen mt-20 mx-auto max-w-4xl relative">
+    <div className="p-6 min-h-screen w-full mt-20 mx-auto max-w-4xl relative">
       <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         Product Details
       </h2>

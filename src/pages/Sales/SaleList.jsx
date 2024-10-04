@@ -55,7 +55,7 @@ const SaleList = () => {
 
   if (error) {
     return (
-      <div className="p-6 bg-gray-50 min-h-screen mt-20 mx-[-24px] md:mx-0 ">
+      <div className="p text-center min-h-screen mt-40 mx-[-24px] md:mx-0 ">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Sales List</h2>
         <div className="text-red-500">An error occurred: {error}</div>
       </div>
@@ -68,7 +68,7 @@ const SaleList = () => {
       <div className="flex justify-between items-center">
         <button
           onClick={() => setModalOpen(true)}
-          className="mb-4 bg-blue-500 text-white py-2 px-4 rounded"
+          className="mb-4 bg-blue-500 text-white py-2 px-4 rounded relative z-20"
         >
           Create Sale
         </button>

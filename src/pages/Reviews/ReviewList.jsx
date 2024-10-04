@@ -12,11 +12,11 @@ const ReviewList = () => {
 
   if (error) {
     return (
-      <div className="p-6 bg-gray-50 min-h-screen mt-20 mx-[-24px] md:mx-0 ">
+      <div className="p-6 text-center min-h-screen mt-40 mx-[-24px] md:mx-0 ">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">
           Error Loading Reviews
         </h2>
-        <div className="text-red-500">An error occurred: {error}</div>
+        <div className="text-red-500">Fetching reviews failed.</div>
       </div>
     );
   }
@@ -30,19 +30,19 @@ const ReviewList = () => {
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
           <thead className="bg-green-400">
             <tr className="text-gray-700">
-              <th className="py-3 px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
                 User Name
               </th>
-              <th className="py-3 px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
                 Rating
               </th>
-              <th className="py-3 px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
                 Comment
               </th>
-              <th className="py-3 px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
                 Date
               </th>
-              <th className="py-3 px-4 border-b text-left text-sm md:text-base">
+              <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">
                 Actions
               </th>
             </tr>
@@ -61,20 +61,20 @@ const ReviewList = () => {
                   className="hover:bg-gray-100 cursor-pointer transition-colors duration-200"
                   onClick={() => navigate(`${review._id}`)}
                 >
-                  <td className="py-3 px-4 border-b text-sm md:text-base text-black font-semibold">
+                  <td className="py-3 px-2 md:px-4 border-b text-[12px] md:text-base text-black font-semibold">
                     {review.userId.name}
                   </td>
-                  <td className="py-3 px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[12px] md:text-base">
                     {review.rating} / 5
                   </td>
-                  <td className="py-3 px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[12px] md:text-base">
                     {review.comment}
                   </td>
-                  <td className="py-3 px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[12px] md:text-base">
                     {new Date(review.createdAt).toLocaleDateString()}{" "}
                     {/* Yalnızca tarihi göster */}
                   </td>
-                  <td className="py-3 px-4 border-b text-sm md:text-base">
+                  <td className="py-3 px-2 md:px-4 border-b text-[12px] md:text-base">
                     {review.rating > 3
                       ? "😀"
                       : review.rating === 3

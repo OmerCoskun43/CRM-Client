@@ -20,7 +20,7 @@ const UserDetail = () => {
 
   // Kullanıcı bulunamadığında hata mesajı göster
   if (!user && !loading) {
-    return <div className="p-6 text-center">User not found.</div>;
+    return <div className="p-6 text-center mt-40">User not found.</div>;
   }
 
   // Loading durumu için skeleton göster

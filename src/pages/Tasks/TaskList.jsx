@@ -36,7 +36,7 @@ const TaskList = () => {
 
   if (error) {
     return (
-      <div className="p-6 text-center text-red-600">
+      <div className="p-6 text-center text-red-600 mt-40">
         Error occurred while fetching tasks.
       </div>
     ); // Hata durumu
@@ -47,7 +47,7 @@ const TaskList = () => {
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Task List</h2>
       <button
         onClick={() => setModalOpen(true)}
-        className="mb-4 bg-blue-500 text-white py-2 px-4 rounded"
+        className="mb-4 bg-blue-500 text-white py-2 px-4 rounded relative z-10"
       >
         Create Task
       </button>

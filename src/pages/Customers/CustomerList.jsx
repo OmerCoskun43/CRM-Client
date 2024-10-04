@@ -39,7 +39,7 @@ const CustomerList = () => {
 
   if (error) {
     return (
-      <div className="p-6 text-center text-red-600">
+      <div className="p-6 text-center text-red-600 mt-40">
         Error occurred while fetching customers.
       </div>
     ); // Hata durumu
@@ -50,11 +50,11 @@ const CustomerList = () => {
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Customer List</h2>
       <button
         onClick={() => setModalOpen(true)}
-        className="mb-4 bg-blue-500 text-white py-2 px-4 rounded"
+        className="mb-4 bg-blue-500 text-white py-2 px-4 rounded relative z-10"
       >
         Add Customer
       </button>
-      <div className="overflow-x-auto rounded-lg shadow-lg">
+      <div className="overflow-x-auto rounded-lg shadow-lg relative z-10">
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
           <thead className="bg-green-400">
             <tr className="text-gray-700">

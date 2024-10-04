@@ -124,7 +124,7 @@ const Profile = () => {
         <h3 className="text-xl font-bold text-gray-700 mt-4">{user?.name}</h3>
       </div>
 
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 z-10 relative">
         <button
           onClick={handleModalOpen}
           className="bg-blue-500 text-white py-2 px-4 rounded"
@@ -139,7 +139,7 @@ const Profile = () => {
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-lg shadow-lg relative">
+      <div className="overflow-x-auto rounded-lg shadow-lg relative ">
         <table className="min-w-full bg-white border border-gray-300 rounded-lg">
           <thead className="bg-green-400">
             <tr className="text-gray-700">

@@ -34,7 +34,7 @@ const NoteList = () => {
 
   if (error) {
     return (
-      <div className="p-6 text-center text-red-600">
+      <div className="p-6 text-center text-red-600 mt-40">
         Error occurred while fetching notes.
       </div>
     ); // Hata durumu
@@ -45,12 +45,12 @@ const NoteList = () => {
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Note List</h2>
       <button
         onClick={() => setModalOpen(true)}
-        className="mb-4 bg-blue-500 text-white py-2 px-4 rounded"
+        className="mb-4 bg-blue-500 text-white py-2 px-4 rounded relative z-10"
       >
         Add Note
       </button>
       <div className="overflow-x-auto rounded-lg shadow-lg">
-        <table className="min-w-full bg-white border border-gray-300 rounded-lg">
+        <table className="min-w-full bg-white border border-gray-300 rounded-lg relative z-10">
           <thead className="bg-green-400">
             <tr className="text-gray-700">
               <th className="py-3 px-2 md:px-4 border-b text-left text-sm md:text-base">

@@ -33,17 +33,19 @@ const CustomerModal = ({
 
   return (
     <div
-      className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+      className={`fixed inset-0 bg-black bg-opacity-50 flex justify-center ${
+        formData?._id ? "" : "mt-20"
+      } items-center  z-20`}
       onClick={onClose} // Modal dışına tıklama ile kapanma
     >
       <div
-        className="bg-gradient-to-br from-blue-800 to-gray-400 bg-opacity-100 rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 mt-8"
+        className="bg-gradient-to-br from-blue-800 to-gray-400 bg-opacity-100 rounded-lg shadow-lg p-8 w-11/12 md:w-3/5 md:mt-8"
         onClick={(e) => e.stopPropagation()} // Modal içindeki tıklamaları engelle
       >
         <h3 className="text-3xl font-bold mb-6 text-white text-center">
           Add Customer
         </h3>
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-2">
           <input
             type="text"
             name="name"

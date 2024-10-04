@@ -32,7 +32,11 @@ const ReviewDetail = () => {
 
   // Hata durumu
   if (error) {
-    return <div className="text-red-500 text-center">{error.message}</div>;
+    return (
+      <div className="text-red-500 text-center mt-40">
+        Review fetching error
+      </div>
+    );
   }
 
   // Tarih formatı için yardımcı fonksiyon

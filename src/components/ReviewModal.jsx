@@ -30,7 +30,7 @@ const ReviewModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
           {formData?._id ? "Edit Review" : "Create Review"}
         </h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <div>
             <label htmlFor="productId" className="block text-white mb-2">
               Product
             </label>
@@ -44,7 +44,7 @@ const ReviewModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="userId" className="block text-white mb-2">
               User
             </label>
@@ -58,7 +58,7 @@ const ReviewModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="rating" className="block text-white mb-2">
               Rating
             </label>
@@ -75,7 +75,7 @@ const ReviewModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="comment" className="block text-white mb-2">
               Comment
             </label>

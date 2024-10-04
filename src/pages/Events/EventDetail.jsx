@@ -52,7 +52,11 @@ const EventDetail = () => {
       </h2>
 
       {/* Hata durumu */}
-      {error && <div className="text-red-500 text-center">{error.message}</div>}
+      {error && (
+        <div className="text-red-500 text-center mt-40">
+          Event fetching error
+        </div>
+      )}
 
       <div className="bg-gray-50 shadow-lg rounded-lg p-6 border border-gray-200 relative">
         {/* Etkinlik bilgileri */}

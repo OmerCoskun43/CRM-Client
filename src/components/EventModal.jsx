@@ -46,7 +46,7 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
           {formData?._id ? "Edit Event" : "Create Event"}
         </h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <div>
             <label htmlFor="customerId" className="block text-white mb-2">
               Customer
             </label>
@@ -71,7 +71,7 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="eventType" className="block text-white mb-2">
               Event Type
             </label>
@@ -86,7 +86,7 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="eventDate" className="block text-white mb-2">
               Event Date
             </label>
@@ -102,7 +102,7 @@ const EventModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="details" className="block text-white mb-2">
               Details
             </label>

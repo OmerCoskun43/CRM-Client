@@ -44,7 +44,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
           {formData?._id ? "Edit Task" : "Create Task"}
         </h3>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
+          <div>
             <label htmlFor="customerId" className="block text-white mb-2">
               Customer
             </label>
@@ -71,7 +71,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="taskDescription" className="block text-white mb-2">
               Task Description
             </label>
@@ -85,7 +85,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="dueDate" className="block text-white mb-2">
               Due Date
             </label>
@@ -101,7 +101,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             />
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="status" className="block text-white mb-2">
               Status
             </label>
@@ -119,7 +119,7 @@ const TaskModal = ({ isOpen, onClose, onSubmit, formData, setFormData }) => {
             </select>
           </div>
 
-          <div className="mb-4">
+          <div>
             <label htmlFor="priority" className="block text-white mb-2">
               Priority
             </label>

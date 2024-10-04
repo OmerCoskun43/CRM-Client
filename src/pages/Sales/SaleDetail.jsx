@@ -63,7 +63,11 @@ const SaleDetail = () => {
   }
 
   if (error) {
-    return <div className="p-6 text-center text-red-600">{error}</div>; // Hata durumu
+    return (
+      <div className="p-6 text-center text-red-600 mt-40">
+        <p>Error occurred while fetching sale.</p>
+      </div>
+    ); // Hata durumu
   }
 
   return (
@@ -81,15 +85,17 @@ const SaleDetail = () => {
         <p className="text-gray-700">
           <strong>Customer ID:</strong> {saleDetail?.customerId._id}
         </p>
-        <p className="text-gray-700">
-          <strong>Email:</strong> {saleDetail?.customerId.email}
+        <div className="text-gray-700">
+          <p>
+            <strong>Email:</strong> {saleDetail?.customerId.email}
+          </p>
           <span
             onClick={() => setMailModalOpen(true)}
             className="bg-slate-500 hover:bg-slate-600 text-white px-2 py-1 absolute right-0 cursor-pointer rounded ml-2"
           >
             Send Email
           </span>
-        </p>
+        </div>
         <p className="text-gray-700">
           <strong>Phone:</strong> {saleDetail?.customerId.phone}
         </p>

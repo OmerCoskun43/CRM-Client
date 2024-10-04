@@ -31,7 +31,11 @@ const CustomerDetail = () => {
   }
 
   if (error) {
-    return <div className="p-6 text-center text-red-600">{error}</div>;
+    return (
+      <div className="p-6 text-center text-red-600 mt-40">
+        Error occurred while fetching customer.
+      </div>
+    );
   }
 
   if (!customer) {
