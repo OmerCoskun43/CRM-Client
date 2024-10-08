@@ -71,7 +71,7 @@ const Profile = () => {
 
   // Profil yüklemesi tamamlandığında state'i güncelle
   useEffect(() => {
-    if (user?.name && user?.departmentId) {
+    if (user?.name) {
       setIsLoadingProfile(false); // Profil bilgileri varsa yükleme tamamlanmış demektir
     }
   }, [user]);

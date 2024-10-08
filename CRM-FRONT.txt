@@ -1,0 +1,82 @@
+src/
+├── assets/                      // Statik dosyalar (resimler, fontlar, vb.)
+│   ├── images/                  // Görüntü dosyaları
+│   ├── fonts/                   // Yazı tipleri
+│   └── ...                      // Diğer varlıklar
+│
+├── components/                  // Genel bileşenler
+│   ├── common/                  // Ortak bileşenler
+│   │   ├── Button.jsx           // Buton bileşeni
+│   │   ├── Input.jsx            // Giriş bileşeni
+│   │   └── ...                  // Diğer ortak bileşenler
+│   ├── layout/                  // Sayfa düzeni bileşenleri
+│   │   ├── Header.jsx           // Başlık bileşeni
+│   │   ├── Footer.jsx           // Alt bilgi bileşeni
+│   │   └── Sidebar.jsx          // Yan menü bileşeni
+│   └── notifications/            // Bildirim bileşenleri
+│       ├── ToastNotification.jsx // Toast bildirim bileşeni
+│       └── ...                  // Diğer bildirim bileşenleri
+│
+├── pages/                       // Sayfalar
+│   ├── Auth/                    // Kimlik doğrulama sayfaları
+│   │   ├── Register.jsx         // Kayıt sayfası
+│   │   ├── Login.jsx            // Giriş sayfası
+│   ├── Dashboard/                // Kontrol paneli sayfası
+│   │   ├── Dashboard.jsx         // Ana kontrol paneli
+│   │   ├── Overview.jsx          // Genel bakış
+│   │   ├── Statistics.jsx        // İstatistikler
+│   ├── Customers/                // Müşteri yönetimi sayfaları
+│   │   ├── CustomerList.jsx      // Müşteri listesi sayfası
+│   │   ├── CustomerDetail.jsx    // Müşteri detay sayfası
+│   ├── Products/                 // Ürün yönetimi sayfaları
+│   │   ├── ProductList.jsx       // Ürün listesi sayfası
+│   │   ├── ProductDetail.jsx     // Ürün detay sayfası
+│   ├── Departments/              // Departman yönetimi sayfaları
+│   │   ├── DepartmentList.jsx    // Departman listesi sayfası
+│   │   ├── DepartmentDetail.jsx  // Departman detay sayfası
+│   ├── Sales/                    // Satış yönetimi sayfaları
+│   │   ├── SaleList.jsx          // Satış listesi sayfası
+│   │   ├── SaleDetail.jsx        // Satış detay sayfası
+│   ├── Events/                   // Etkinlik yönetimi sayfaları
+│   │   ├── EventList.jsx         // Etkinlik listesi sayfası
+│   │   ├── EventDetail.jsx       // Etkinlik detay sayfası
+│   ├── Notes/                    // Not yönetimi sayfaları
+│   │   ├── NoteList.jsx          // Not listesi sayfası
+│   │   ├── NoteDetail.jsx        // Not detay sayfası
+│   ├── Reviews/                  // İnceleme yönetimi sayfaları
+│   │   ├── ReviewList.jsx        // İnceleme listesi sayfası
+│   │   ├── ReviewDetail.jsx      // İnceleme detay sayfası
+│   └── ...                       // Diğer sayfalar
+│
+├── hooks/                       // Özel hooklar
+│   ├── useFetch.js              // Veri çekmek için hook
+│   └── ...                      // Diğer özel hooklar
+│
+├── redux/                       // Redux Toolkit dosyaları
+│   ├── features/                // Özellikler
+│   │   ├── authSlice.js         // Kimlik doğrulama dilimi
+│   │   ├── customerSlice.js      // Müşteri dilimi
+│   │   ├── productSlice.js       // Ürün dilimi
+│   │   ├── departmentSlice.js     // Departman dilimi
+│   │   ├── saleSlice.js          // Satış dilimi
+│   │   ├── eventSlice.js         // Etkinlik dilimi
+│   │   ├── noteSlice.js          // Not dilimi
+│   │   └── reviewSlice.js        // Ürün incelemesi dilimi
+│   ├── store.js                 // Redux store yapılandırması
+│   └── middlewares/             // Özel middleware'ler (varsa)
+│       └── logger.js            // Özel logger middleware
+│
+├── styles/                      // Stil dosyaları
+│   ├── App.css                  // Ana stil dosyası
+│   ├── variables.css            // CSS değişkenleri
+│   ├── mixins.css               // CSS karışımları
+│   └── ...                      // Diğer stil dosyaları
+│
+├── utils/                       // Yardımcı fonksiyonlar
+│   ├── validators.js            // Doğrulama fonksiyonları
+│   ├── apiUtils.js              // API yardımcı fonksiyonları
+│   └── ...                      // Diğer yardımcı fonksiyonlar
+│
+├── App.jsx                      // Ana uygulama bileşeni
+├── index.js                     // Uygulamanın başlangıç noktası
+└── routes.js                   // Uygulama yönlendirme yapılandırması
